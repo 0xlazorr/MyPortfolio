@@ -1,3 +1,4 @@
+
 tailwind.config = {
     darkMode: 'class',
 }
@@ -152,45 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { rootMargin: '0px', threshold: 0.15 });
     sections.forEach(section => observer.observe(section));
-
-    // --- Contact Form Submission ---
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(contactForm);
-        const originalButtonText = submitButton.innerHTML;
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Sending...';
-
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-        })
-            .then(() => {
-                formStatus.textContent = "Thank you! Your message has been sent.";
-                contactForm.reset();
-            })
-            .catch((error) => {
-                formStatus.textContent = "Oops! Something went wrong. Please try again.";
-                formStatus.classList.remove('text-green-500');
-                formStatus.classList.add('text-red-500');
-                console.error(error);
-            })
-            .finally(() => {
-                setTimeout(() => {
-                    formStatus.textContent = '';
-                    formStatus.classList.remove('text-red-500');
-                    formStatus.classList.add('text-green-500');
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonText;
-                }, 5000);
-            });
-    });
 
     // --- Testimonial Slider ---
     const slider = document.getElementById('testimonial-container');
