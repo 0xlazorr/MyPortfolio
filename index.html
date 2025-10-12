@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazorr | Full-Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            /* Use CSS variables for particle colors for a smoother theme transition */
+            --particle-color: rgba(100, 100, 100, 0.2);
+            --particle-line-rgb: 150, 150, 150;
+        }
+
+        .dark {
+            --particle-color: rgba(167, 139, 250, 0.3);
+            --particle-line-rgb: 140, 100, 255;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .light ::-webkit-scrollbar-track {
+            background: #e5e7eb;
+        }
+
+        .light ::-webkit-scrollbar-thumb {
+            background: #a78bfa;
+            border-radius: 4px;
+        }
+
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #a78bfa #e5e7eb;
+            /* thumb color track color */
+        }
+
+        .dark * {
+            scrollbar-color: #6d28d9 #1f2937;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6d28d9;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #7c3aed;
+        }
+
+
+        /* Hero canvas styling */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Glow effects */
+        .purple-glow {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4), 0 0 5px rgba(139, 92, 246, 0.6);
+        }
+
+        .purple-glow:hover {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6), 0 0 10px rgba(139, 92, 246, 0.8);
+        }
+
+        .light .card-glow:hover {
+            border-color: rgba(167, 139, 250, 0.6);
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.2);
+        }
+
+        .dark .card-glow:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 0 15px rgba(167, 139, 250, 0.1);
+        }
+
+        /* Scroll animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typing effect cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.7rem;
+            background-color: #a78bfa;
+            animation: blink 1s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Experience Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #d1d5db;
+        }
+
+        .dark .timeline-item {
+            border-left-color: #374151;
+        }
+
+        .timeline-item:last-child {
+            border-left-color: transparent;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 4px;
+            height: 1rem;
+            width: 1rem;
+            background-color: #6d28d9;
+            border-radius: 50%;
+            border: 2px solid #a78bfa;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300">
+
+    <header class="bg-gray-100/80 dark:bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-gray-900 dark:text-white">LE<span
+                        class="text-violet-500">.</span></a>
+                <ul class="hidden md:flex space-x-8 items-center text-gray-600 dark:text-gray-300">
+                    <li><a href="#home"
+                            class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a>
+                    </li>
+                    <li><a href="#about"
+                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a>
+                    </li>
+                    <li><a href="#experience"
+                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a>
+                    </li>
+                    <li><a href="#tech-stack"
+                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech
+                            Stack</a></li>
+                    <li><a href="#projects"
+                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact
+                            Me</a></li>
+                    <li>
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                    fill-rule="evenodd" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300">
+                        <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden text-gray-600 dark:text-gray-300">
+            <ul class="px-6 pb-4 flex flex-col space-y-4">
+                <li><a href="#home"
+                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a>
+                </li>
+                <li><a href="#about"
+                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a>
+                </li>
+                <li><a href="#experience"
+                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a>
+                </li>
+                <li><a href="#tech-stack"
+                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech
+                        Stack</a></li>
+                <li><a href="#projects"
+                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a>
+                </li>
+
+                <li><a href="#contact"
+                        class="block text-center bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact
+                        Me</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <canvas id="particle-canvas"></canvas>
+            <div class="hero-content container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+                    Lazarus Ebi
+                </h1>
+                <p class="text-xl md:text-2xl text-violet-500 dark:text-violet-400 mb-8 h-8">
+                    <span id="typing-text"></span><span class="typing-cursor"></span>
+                </p>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-10">
+                    I build beautiful, functional, and scalable web applications from front-end to back-end.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#projects"
+                        class="w-full sm:w-auto bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 purple-glow">View
+                        My Work</a>
+                    <a href="Media/Lazarus_ebi.pdf"
+                        class="w-full sm:w-auto border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white dark:text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300"
+                        download>Download
+                        Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">About Me</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto mb-10"></div>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                        I am a passionate Full-Stack Developer with a knack for crafting elegant solutions to complex
+                        problems. My expertise spans the entire development stack, from creating responsive user
+                        interfaces with modern JavaScript frameworks to designing and managing robust server-side
+                        architectures and databases. I believe in writing clean, maintainable code and fostering a
+                        collaborative environment to build amazing digital products. I thrive on learning new
+                        technologies and continuously improving my craft to deliver high-quality, impactful software.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Career Journey</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2022 - Present</p>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Full-Stack Developer</h3>
+                        <p class="text-md text-gray-500 dark:text-gray-400 mb-3">EbiTechnologies.</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                            <li>Led the development of a scalable e-commerce platform using the MERN stack.</li>
+                            <li>Designed and implemented RESTful APIs for new product features.</li>
+                            <li>Mentored junior developers and conducted code reviews to maintain code quality.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2018 - 2022</p>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Software Engineer</h3>
+                        <p class="text-md text-gray-500 dark:text-gray-400 mb-3">Bemint &mdash; Empowering Africans.</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                            <li>Developed and maintained user-facing features for the "Votask" voting application.</li>
+                            <li>Collaborated with designers to translate UI/UX designs into responsive web pages.</li>
+                            <li>Contributed to the back-end services using Node.js and Express.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2016 - 2018</p>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Web Development Intern</h3>
+                        <p class="text-md text-gray-500 dark:text-gray-400 mb-3">Industrial Training Fund.</p>
+                        <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                            <li>Assisted in building and maintaining websites using HTML, CSS, and JavaScript.</li>
+                            <li>Learned about web development best practices and version control with Git.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">My Tech Stack</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">A collection of the
+                        primary tools and technologies I use to build modern web applications.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 text-center">
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-react fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">React</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-node-js fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Node.js</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-js fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">JavaScript</p>
+                    </div>
+
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-python fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Python</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-laravel fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Laravel</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-html5 fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">HTML5</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-css3-alt fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">CSS3</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-database fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">MongoDB</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-leaf fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">PostgreSQL</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-git fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Git</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-aws fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">AWS</p>
+                    </div>
+                    <div
+                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-docker fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Docker</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Featured Projects</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
+                        <div
+                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
+                            <div class="p-6">
+                                <h3
+                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                    Full-Stack E-commerce Platform</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    A complete e-commerce solution with product listings, user authentication, a
+                                    shopping cart, and a Stripe-integrated checkout process.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
+                        <div
+                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
+                            <div class="p-6">
+                                <h3
+                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                    Real-time Chat Application</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    A web-based chat app using WebSockets for instant messaging, featuring private
+                                    chats, and user presence indicators.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Express</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Socket.IO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
+                        <div
+                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
+                            <div class="p-6">
+                                <h3
+                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                    Bank Management Dashboard</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    An admin dashboard for managing bank accounts, transactions, and user profiles with
+                                    data visualization features.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">PostgreSQL</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">GraphQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
+                        <div
+                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
+                            <div class="p-6">
+                                <h3
+                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                    School Portal</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    A comprehensive school management system with student records, attendance tracking,
+                                    and grade management.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">laravel</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Tailwind
+                                        CSS</span>
+                                    <span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Alpine.js
+                                    </span><span
+                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Livewire
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">What People Say</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                </div>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="testimonial-slider" class="overflow-hidden">
+                        <div id="testimonial-container" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
+                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"Lazorr is a fantastic
+                                    developer who consistently delivers high-quality, clean code. A true asset to any
+                                    team."</p>
+                                <p class="font-bold text-gray-900 dark:text-white text-lg">Azizat Akindipe</p>
+                                <p class="text-violet-500 dark:text-violet-400">Client</p>
+                            </div>
+                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
+                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"Working with Lazorr
+                                    streamlined our entire development process and improved our product significantly."
+                                </p>
+                                <p class="font-bold text-gray-900 dark:text-white text-lg">Josh Blazer</p>
+                                <p class="text-violet-500 dark:text-violet-400">Project Collaborator</p>
+                            </div>
+                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
+                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"The depth of Lazorr's
+                                    full-stack knowledge is truly incredible. He can tackle any challenge thrown his
+                                    way."</p>
+                                <p class="font-bold text-gray-900 dark:text-white text-lg">Meliodas</p>
+                                <p class="text-violet-500 dark:text-violet-400">Project Collaborator</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="prev-testimonial" aria-label="Previous Testimonial"
+                        class="absolute top-1/2 left-0 -translate-y-1/2 p-2 rounded-full bg-gray-200/50 dark:bg-gray-800/50 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 text-gray-800 dark:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <button id="next-testimonial" aria-label="Next Testimonial"
+                        class="absolute top-1/2 right-0 -translate-y-1/2 p-2 rounded-full bg-gray-200/50 dark:bg-gray-800/50 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 text-gray-800 dark:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h2>
+                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Have a project in mind or
+                        want to connect? Send me a message, and I'll get back to you soon.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <form id="contact-form" name="contact" method="POST" data-netlify="true"
+                        netlify-honeypot="bot-field" class="space-y-6" action="https://formspree.io/f/xanppgjy"
+                        method="POST">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        <div>
+                            <label for="name"
+                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500">
+                        </div>
+                        <div>
+                            <label for="email"
+                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500">
+                        </div>
+                        <div>
+                            <label for="message"
+                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 purple-glow">Send
+                                Message</button>
+                        </div>
+                    </form>
+                    <p id="form-status" class="text-center mt-6 text-green-500"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/0xlazorr"
+                    class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300"
+                    aria-label="GitHub">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/lazarus-ebi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300"
+                    aria-label="LinkedIn">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="https://x.com/0xlazorr?t=YIy_JPH3dP2G2UUOYsOfwQ&s=09"
+                    class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300"
+                    aria-label="Twitter">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+                <a href="https://m.facebook.com/profile.php?id=100090223796281"
+                    class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300"
+                    aria-label="Facebook">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-8">&copy; 2025 lazorr. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="to-top-button"
+        class="hidden fixed bottom-5 right-5 z-50 p-3 rounded-full bg-violet-600 text-white hover:bg-violet-700 transition-opacity duration-300 purple-glow"
+        aria-label="Back to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <script src="script.js">
+    </script>
+</body>
+
+</html>
