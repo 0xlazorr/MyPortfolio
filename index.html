@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazorr | Full-Stack Developer</title>
+    <title>Lazorr | Embedded Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,6 @@
 
     <style>
         :root {
-            /* Use CSS variables for particle colors for a smoother theme transition */
             --particle-color: rgba(100, 100, 100, 0.2);
             --particle-line-rgb: 150, 150, 150;
         }
@@ -36,6 +35,7 @@
 
         .light ::-webkit-scrollbar-track {
             background: #e5e7eb;
+            border-radius: 4px;
         }
 
         .light ::-webkit-scrollbar-thumb {
@@ -50,7 +50,6 @@
         * {
             scrollbar-width: thin;
             scrollbar-color: #a78bfa #e5e7eb;
-            /* thumb color track color */
         }
 
         .dark * {
@@ -59,6 +58,7 @@
 
         .dark ::-webkit-scrollbar-track {
             background: #1f2937;
+            border-radius: 4px;
         }
 
         .dark ::-webkit-scrollbar-thumb {
@@ -70,8 +70,12 @@
             background: #7c3aed;
         }
 
+        /* Specific container scrollbar for projects */
+        .project-scroll-container {
+            padding-right: 10px;
+            scroll-behavior: smooth;
+        }
 
-        /* Hero canvas styling */
         #particle-canvas {
             position: absolute;
             top: 0;
@@ -86,7 +90,6 @@
             z-index: 2;
         }
 
-        /* Glow effects */
         .purple-glow {
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.4), 0 0 5px rgba(139, 92, 246, 0.6);
         }
@@ -105,7 +108,6 @@
             box-shadow: 0 0 15px rgba(167, 139, 250, 0.1);
         }
 
-        /* Scroll animation */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -117,7 +119,6 @@
             transform: translateY(0);
         }
 
-        /* Typing effect cursor */
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -129,18 +130,10 @@
         }
 
         @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
-        /* Experience Timeline */
         .timeline-item {
             position: relative;
             padding-left: 3rem;
@@ -177,84 +170,38 @@
                 <a href="#home" class="text-2xl font-bold text-gray-900 dark:text-white">LE<span
                         class="text-violet-500">.</span></a>
                 <ul class="hidden md:flex space-x-8 items-center text-gray-600 dark:text-gray-300">
-                    <li><a href="#home"
-                            class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a>
-                    </li>
-                    <li><a href="#about"
-                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a>
-                    </li>
-                    <li><a href="#experience"
-                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a>
-                    </li>
-                    <li><a href="#tech-stack"
-                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech
-                            Stack</a></li>
-                    <li><a href="#projects"
-                            class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a>
-                    </li>
-                    <li><a href="#contact"
-                            class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact
-                            Me</a></li>
+                    <li><a href="#home" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a></li>
+                    <li><a href="#experience" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a></li>
+                    <li><a href="#tech-stack" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech Stack</a></li>
+                    <li><a href="#projects" class="hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#contact" class="bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact Me</a></li>
                     <li>
                         <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                    fill-rule="evenodd" clip-rule="evenodd"></path>
-                            </svg>
+                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                         </button>
                     </li>
                 </ul>
                 <div class="md:hidden flex items-center gap-4">
-                    <button id="theme-toggle-mobile"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300">
-                        <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300">
+                        <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                     </button>
                     <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
             </nav>
         </div>
         <div id="mobile-menu" class="hidden md:hidden text-gray-600 dark:text-gray-300">
             <ul class="px-6 pb-4 flex flex-col space-y-4">
-                <li><a href="#home"
-                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a>
-                </li>
-                <li><a href="#about"
-                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a>
-                </li>
-                <li><a href="#experience"
-                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a>
-                </li>
-                <li><a href="#tech-stack"
-                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech
-                        Stack</a></li>
-                <li><a href="#projects"
-                        class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a>
-                </li>
-
-                <li><a href="#contact"
-                        class="block text-center bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact
-                        Me</a></li>
+                <li><a href="#home" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Home</a></li>
+                <li><a href="#about" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">About</a></li>
+                <li><a href="#experience" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Experience</a></li>
+                <li><a href="#tech-stack" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Tech Stack</a></li>
+                <li><a href="#projects" class="block hover:text-violet-500 dark:hover:text-violet-400 transition-colors duration-300">Projects</a></li>
+                <li><a href="#contact" class="block text-center bg-violet-600 hover:bg-violet-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 purple-glow">Contact Me</a></li>
             </ul>
         </div>
     </header>
@@ -270,16 +217,11 @@
                     <span id="typing-text"></span><span class="typing-cursor"></span>
                 </p>
                 <p class="max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-10">
-                    I build beautiful, functional, and scalable web applications from front-end to back-end.
+                    Architecting robust, secure, and highly optimized embedded systems and low-level software.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#projects"
-                        class="w-full sm:w-auto bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 purple-glow">View
-                        My Work</a>
-                    <a href="Media/Lazarus_ebi.pdf"
-                        class="w-full sm:w-auto border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white dark:text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300"
-                        download>Download
-                        Resume</a>
+                    <a href="#projects" class="w-full sm:w-auto bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 purple-glow">View My Work</a>
+                    <a href="cv.html" class="w-full sm:w-auto border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white dark:text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300">View CV</a>
                 </div>
             </div>
         </section>
@@ -290,12 +232,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">About Me</h2>
                     <div class="w-24 h-1 bg-violet-500 mx-auto mb-10"></div>
                     <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                        I am a passionate Full-Stack Developer with a knack for crafting elegant solutions to complex
-                        problems. My expertise spans the entire development stack, from creating responsive user
-                        interfaces with modern JavaScript frameworks to designing and managing robust server-side
-                        architectures and databases. I believe in writing clean, maintainable code and fostering a
-                        collaborative environment to build amazing digital products. I thrive on learning new
-                        technologies and continuously improving my craft to deliver high-quality, impactful software.
+                        I am an Embedded Software Engineer deeply immersed in systems programming and hardware-level development. My expertise bridges the gap between hardware and software, focusing on Linux environments, bare-metal C/C++, and memory-safe Rust implementations. I build systems where every byte and clock cycle matters; rigorously addressing CPU, memory, and I/O constraints. By proactively identifying attack surfaces and prioritizing threat modeling, I ensure my firmware and low-level architectures mitigate concurrency risks, undefined behavior, and common misconfigurations before they reach production.
                     </p>
                 </div>
             </div>
@@ -311,33 +248,33 @@
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2022 - Present</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Full-Stack Developer</h3>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Embedded Software Engineer</h3>
                         <p class="text-md text-gray-500 dark:text-gray-400 mb-3">EbiTechnologies.</p>
                         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                            <li>Led the development of a scalable e-commerce platform using the MERN stack.</li>
-                            <li>Designed and implemented RESTful APIs for new product features.</li>
-                            <li>Mentored junior developers and conducted code reviews to maintain code quality.</li>
+                            <li>Developed RTOS-based firmware for ARM Cortex-M (STM32) microcontrollers.</li>
+                            <li>Wrote and maintained custom Embedded Linux device drivers for SPI and I2C sensors.</li>
+                            <li>Architected secure bootloaders and implemented cryptographic protocols for IoT devices.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2018 - 2022</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Software Engineer</h3>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Junior-level programmer</h3>
                         <p class="text-md text-gray-500 dark:text-gray-400 mb-3">Bemint &mdash; Empowering Africans.</p>
                         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                            <li>Developed and maintained user-facing features for the "Votask" voting application.</li>
-                            <li>Collaborated with designers to translate UI/UX designs into responsive web pages.</li>
-                            <li>Contributed to the back-end services using Node.js and Express.</li>
+                            <li>Optimized legacy C/C++ data processing pipelines, reducing CPU overhead by 40%.</li>
+                            <li>Introduced Rust into the stack to eliminate memory safety vulnerabilities in concurrent modules.</li>
+                            <li>Conducted rigorous technical security analysis and threat modeling across distributed systems.</li>
                         </ul>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <p class="text-sm text-violet-500 dark:text-violet-400 mb-1">2016 - 2018</p>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Web Development Intern</h3>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Firmware Engineering Intern</h3>
                         <p class="text-md text-gray-500 dark:text-gray-400 mb-3">Industrial Training Fund.</p>
                         <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                            <li>Assisted in building and maintaining websites using HTML, CSS, and JavaScript.</li>
-                            <li>Learned about web development best practices and version control with Git.</li>
+                            <li>Assisted in writing bare-metal C routines for Arduino and 8-bit AVR microcontrollers.</li>
+                            <li>Developed Python scripts for automated hardware-in-the-loop (HIL) testing.</li>
                         </ul>
                     </div>
                 </div>
@@ -349,70 +286,48 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">My Tech Stack</h2>
                     <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
-                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">A collection of the
-                        primary tools and technologies I use to build modern web applications.</p>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">A collection of the primary languages, architectures, and tools I use for low-level development.</p>
                 </div>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 text-center">
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-react fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">React</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 text-center">
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <span class="text-4xl font-bold text-violet-500 dark:text-violet-400">C</span>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">C</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-node-js fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Node.js</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <span class="text-4xl font-bold text-violet-500 dark:text-violet-400">C++</span>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">C++</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-js fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">JavaScript</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-rust fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Rust</p>
                     </div>
-
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-memory fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Assembly</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
                         <i class="fa-brands fa-python fa-4x text-violet-500 dark:text-violet-400"></i>
                         <p class="mt-4 font-semibold text-gray-900 dark:text-white">Python</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-laravel fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Laravel</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-brands fa-linux fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Linux Kernel</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-html5 fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">HTML5</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-microchip fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">STM32 / ARM</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-css3-alt fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">CSS3</p>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-robot fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Arduino</p>
                     </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
+                        <i class="fa-solid fa-shield-halved fa-4x text-violet-500 dark:text-violet-400"></i>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Secure Coding</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
                         <i class="fa-solid fa-database fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">MongoDB</p>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-solid fa-leaf fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">PostgreSQL</p>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-git fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Git</p>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-aws fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">AWS</p>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 p-6 rounded-lg transition-transform transform hover:-translate-y-2 card-glow border border-gray-200 dark:border-gray-700">
-                        <i class="fa-brands fa-docker fa-4x text-violet-500 dark:text-violet-400"></i>
-                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">Docker</p>
+                        <p class="mt-4 font-semibold text-gray-900 dark:text-white">SQL</p>
                     </div>
                 </div>
             </div>
@@ -420,153 +335,260 @@
 
         <section id="projects" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50 fade-in-section">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
+                <div class="text-center mb-10">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Featured Projects</h2>
                     <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Scroll to explore my open-source firmwares, memory management utilities, and low-level software architectures, ordered from foundational systems to complex operating systems.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
-                        <div
-                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
-                            <div class="p-6">
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
-                                    Full-Stack E-commerce Platform</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                    A complete e-commerce solution with product listings, user authentication, a
-                                    shopping cart, and a Stripe-integrated checkout process.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
+                
+                <div class="relative w-full max-w-7xl mx-auto">
+                    <div class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-gray-50 dark:from-gray-900/50 to-transparent z-10 pointer-events-none rounded-t-xl"></div>
+                    
+                    <div class="max-h-[750px] overflow-y-auto project-scroll-container py-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Custom Memory Allocator</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A custom implementation of `malloc`, `calloc`, `realloc`, and `free` using the `sbrk` system call. Features an explicit free list, block splitting, and pointer arithmetic optimization to strictly manage heap memory.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Memory Management</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">POSIX</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
-                        <div
-                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
-                            <div class="p-6">
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
-                                    Real-time Chat Application</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                    A web-based chat app using WebSockets for instant messaging, featuring private
-                                    chats, and user presence indicators.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Express</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Socket.IO</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
-                        <div
-                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
-                            <div class="p-6">
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
-                                    Bank Management Dashboard</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                    An admin dashboard for managing bank accounts, transactions, and user profiles with
-                                    data visualization features.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">PostgreSQL</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">GraphQL</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group">
-                        <div
-                            class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow">
-                            <div class="p-6">
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
-                                    School Portal</h3>
-                                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                    A comprehensive school management system with student records, attendance tracking,
-                                    and grade management.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">laravel</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Tailwind
-                                        CSS</span>
-                                    <span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Alpine.js
-                                    </span><span
-                                        class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Livewire
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+                            </a>
 
-        <section id="testimonials" class="py-20 md:py-32 bg-gray-50 dark:bg-gray-900/50 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">What People Say</h2>
-                    <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
-                </div>
-                <div class="relative max-w-3xl mx-auto">
-                    <div id="testimonial-slider" class="overflow-hidden">
-                        <div id="testimonial-container" class="flex transition-transform duration-500 ease-in-out">
-                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
-                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"Lazorr is a fantastic
-                                    developer who consistently delivers high-quality, clean code. A true asset to any
-                                    team."</p>
-                                <p class="font-bold text-gray-900 dark:text-white text-lg">Azizat Akindipe</p>
-                                <p class="text-violet-500 dark:text-violet-400">Client</p>
-                            </div>
-                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
-                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"Working with Lazorr
-                                    streamlined our entire development process and improved our product significantly."
-                                </p>
-                                <p class="font-bold text-gray-900 dark:text-white text-lg">Josh Blazer</p>
-                                <p class="text-violet-500 dark:text-violet-400">Project Collaborator</p>
-                            </div>
-                            <div class="testimonial-slide w-full flex-shrink-0 text-center px-8">
-                                <p class="text-xl italic text-gray-600 dark:text-gray-300 mb-6">"The depth of Lazorr's
-                                    full-stack knowledge is truly incredible. He can tackle any challenge thrown his
-                                    way."</p>
-                                <p class="font-bold text-gray-900 dark:text-white text-lg">Meliodas</p>
-                                <p class="text-violet-500 dark:text-violet-400">Project Collaborator</p>
-                            </div>
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Rust CLI System Monitor</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A lightweight, zero-allocation terminal monitoring tool that parses `/proc` virtual filesystems directly to display real-time CPU, memory, and I/O constraints with absolute memory safety.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Rust</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Linux</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Systems Programming</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Linux HID Event Logger</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A low-level input subsystem monitor (educational keylogger) that interfaces directly with `/dev/input/event*`. Demonstrates secure handling of device file descriptors, ring buffers, and system interrupt handling.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Linux Kernel API</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">I/O</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Bare-Metal USB Stack</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Implemented a USB Human Interface Device (HID) class from scratch on an STM32 bare-metal setup, interacting directly with USB peripheral registers without HAL libraries to save memory.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">STM32</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">USB Protocols</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Multithreaded HTTP Server</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A high-performance web server built natively in C. Uses socket programming, a custom pre-allocated thread pool, and strict memory pooling to eliminate memory leaks and mitigate concurrency risks under high load.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Sockets</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Pthreads</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Zero-Copy TCP Proxy</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            An asynchronous networking utility written in Rust utilizing the Tokio runtime. Routes traffic seamlessly while enforcing zero-copy data transfer to heavily optimize memory bandwidth and reduce CPU overhead.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Rust</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Tokio</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Networking</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            IoT Sensor Node (Secure Boot)</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            An ESP32-based Arduino project collecting telemetry data. Designed with comprehensive threat modeling, implementing secure boot and encrypted MQTT payload transmission.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C++</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Arduino</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Cryptography</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Automotive CAN Bus Logger</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Built a high-speed CAN logging device capable of parsing OBD-II diagnostics and proprietary vehicle telemetry. Ensured zero packet loss through interrupt-driven buffers.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C++</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">CAN Bus</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">FreeRTOS</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Wearable BLE Health Monitor</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Firmware for a Nordic nRF52-based health monitor using Zephyr RTOS. Managed low-power states, PPG sensor acquisition, and robust Bluetooth Low Energy GATT service profiles.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Zephyr RTOS</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">BLE</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Embedded Linux Device Driver</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A custom character device driver integrated into the Linux kernel for a proprietary environmental sensor array. Managed memory-mapped I/O and strict DMA protocols.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Linux Kernel</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Make</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Fault-Tolerant Flash File System</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Ported and heavily modified LittleFS for a custom SPI NOR Flash chip array. Ensured wear-leveling and power-loss resilience for critical system configuration data.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Memory Management</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">SPI</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Custom RTOS Kernel for STM32</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Developed a preemptive Real-Time Operating System from scratch for ARM Cortex-M microcontrollers. Includes custom schedulers, mutexes, and zero undefined-behavior constraints.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">C</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">ARM Assembly</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">STM32</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            Rust Flight Controller Firmware</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            A memory-safe quadcopter flight controller using Rust. Handled complex sensor fusions (I2C/SPI), PID loops, and concurrency risks natively through Rust's strict compiler guarantees.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Rust</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Hardware Interfacing</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Embedded HAL</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="block group h-full">
+                                <div class="h-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 card-glow flex flex-col">
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+                                            RISC-V Hypervisor Port</h3>
+                                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                            Experimental port of a lightweight Type-1 hypervisor to a RISC-V architecture using Rust. Handled hardware virtualization extensions, memory isolation, and trap delegation.
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pb-6 mt-auto flex flex-wrap gap-2">
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Rust</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">RISC-V</span>
+                                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-2.5 py-1 rounded-full">Virtualization</span>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
-                    <button id="prev-testimonial" aria-label="Previous Testimonial"
-                        class="absolute top-1/2 left-0 -translate-y-1/2 p-2 rounded-full bg-gray-200/50 dark:bg-gray-800/50 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 text-gray-800 dark:text-white transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <button id="next-testimonial" aria-label="Next Testimonial"
-                        class="absolute top-1/2 right-0 -translate-y-1/2 p-2 rounded-full bg-gray-200/50 dark:bg-gray-800/50 hover:bg-gray-300/50 dark:hover:bg-gray-700/50 text-gray-800 dark:text-white transition">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg>
-                    </button>
+                    
+                    <div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-gray-50 dark:from-gray-900/50 to-transparent z-10 pointer-events-none rounded-b-xl"></div>
                 </div>
             </div>
         </section>
@@ -576,27 +598,23 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h2>
                     <div class="w-24 h-1 bg-violet-500 mx-auto"></div>
-                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Have a project in mind or
-                        want to connect? Send me a message, and I'll get back to you soon.</p>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Need a secure, optimized firmware solution? Send me a message, and I'll get back to you soon.</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
                     <form id="contact-form" class="space-y-6" action="https://formspree.io/f/xanppgjy" method="POST">
                         <input type="text" name="_gotcha" style="display:none" />
                         <div>
-                            <label for="name"
-                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Name</label>
+                            <label for="name" class="block text-sm font-medium text-gray-500 dark:text-gray-400">Name</label>
                             <input type="text" id="name" name="name" required
                                 class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500">
                         </div>
                         <div>
-                            <label for="email"
-                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Email</label>
+                            <label for="email" class="block text-sm font-medium text-gray-500 dark:text-gray-400">Email</label>
                             <input type="email" id="email" name="email" required
                                 class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500">
                         </div>
                         <div>
-                            <label for="message"
-                                class="block text-sm font-medium text-gray-500 dark:text-gray-400">Message</label>
+                            <label for="message" class="block text-sm font-medium text-gray-500 dark:text-gray-400">Message</label>
                             <textarea id="message" name="message" rows="4" required
                                 class="mt-1 block w-full bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-3 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500"></textarea>
                         </div>
@@ -650,7 +668,7 @@
                     </svg>
                 </a>
             </div>
-            <p class="mt-8">&copy; 2025 lazorr. All rights reserved.</p>
+            <p class="mt-8">&copy; 2026 lazorr. All rights reserved.</p>
         </div>
     </footer>
 
@@ -662,7 +680,164 @@
         </svg>
     </button>
 
-    <script src="script.js"></script>
-</body>
+    <script>
+tailwind.config = {
+    darkMode: 'class',
+}
 
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+    function updateThemeIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        themeToggleLightIcon.classList.toggle('hidden', !isDark);
+        themeToggleDarkIcon.classList.toggle('hidden', isDark);
+        themeToggleLightIconMobile.classList.toggle('hidden', !isDark);
+        themeToggleDarkIconMobile.classList.toggle('hidden', isDark);
+    }
+
+    updateThemeIcons();
+
+    const handleThemeToggle = () => {
+        const isDarkMode = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        updateThemeIcons();
+        initParticles(); 
+    };
+
+    themeToggleBtn.addEventListener('click', handleThemeToggle);
+    themeToggleBtnMobile.addEventListener('click', handleThemeToggle);
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a, header nav > ul a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            mobileMenu.classList.add('hidden');
+            if (link.hash !== "") {
+                e.preventDefault();
+                document.querySelector(link.hash).scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    const typingTextElement = document.getElementById('typing-text');
+    const phrases = ["Embedded Systems Engineer", "Systems Programmer", "Hardware Hacker"];
+    let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+        charIndex += isDeleting ? -1 : 1;
+        typingTextElement.textContent = currentPhrase.substring(0, charIndex);
+
+        let typeSpeed = isDeleting ? 75 : 150;
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            typeSpeed = 2000; isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
+        }
+        setTimeout(type, typeSpeed);
+    }
+    type();
+
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function setCanvasSize() {
+        const container = canvas.parentElement;
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+    }
+
+    class Particle {
+        constructor(x, y, dX, dY, size, color) { this.x = x; this.y = y; this.directionX = dX; this.directionY = dY; this.size = size; this.color = color; }
+        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
+        update() {
+            if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+            if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+            this.x += this.directionX; this.y += this.directionY;
+            this.draw();
+        }
+    }
+
+    function initParticles() {
+        particlesArray = [];
+        let numberOfParticles = (canvas.height * canvas.width) / 9000;
+        const particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim();
+        for (let i = 0; i < numberOfParticles; i++) {
+            let size = (Math.random() * 2) + 1;
+            let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+            let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+            let dX = (Math.random() * .4) - .2;
+            let dY = (Math.random() * .4) - .2;
+            particlesArray.push(new Particle(x, y, dX, dY, size, particleColor));
+        }
+    }
+
+    function connectParticles() {
+        const lineColorRGB = getComputedStyle(document.documentElement).getPropertyValue('--particle-line-rgb').trim();
+        for (let a = 0; a < particlesArray.length; a++) {
+            for (let b = a; b < particlesArray.length; b++) {
+                let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    let opacityValue = 1 - (distance / 20000);
+                    ctx.strokeStyle = `rgba(${lineColorRGB}, ${opacityValue})`;
+                    ctx.lineWidth = 1; ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
+                }
+            }
+        }
+    }
+
+    let animationFrameId;
+    function animateParticles() {
+        cancelAnimationFrame(animationFrameId); 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particlesArray.forEach(p => p.update());
+        connectParticles();
+        animationFrameId = requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener('resize', () => { setCanvasSize(); initParticles(); });
+    setCanvasSize(); initParticles(); animateParticles();
+
+    const sections = document.querySelectorAll('.fade-in-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px', threshold: 0.15 });
+    sections.forEach(section => observer.observe(section));
+
+    const toTopButton = document.getElementById('to-top-button');
+    window.addEventListener('scroll', () => {
+        toTopButton.classList.toggle('hidden', window.pageYOffset <= 300);
+    });
+    toTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+    </script>
+</body>
 </html>
