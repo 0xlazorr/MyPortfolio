@@ -19,29 +19,45 @@
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         .light ::-webkit-scrollbar-track {
-            background: #e5e7eb;
+            background: #f1f1f1;
+            border-radius: 12px;
         }
 
         .light ::-webkit-scrollbar-thumb {
-            background: #a78bfa;
-            border-radius: 4px;
+            background: #6e93f7;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: #4070f4;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #6e93f7 #f1f1f1;
         }
 
         .dark * {
-            scrollbar-color: #6d28d9 #1f2937;
+            scrollbar-color: #4070f4 #0E2431;
         }
 
         .dark ::-webkit-scrollbar-track {
-            background: #1f2937;
+            background: #0E2431;
+            border-radius: 12px;
         }
 
         .dark ::-webkit-scrollbar-thumb {
-            background: #6d28d9;
-            border-radius: 4px;
+            background: #4070f4;
+            border-radius: 12px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #6e93f7;
         }
 
         .cv-card {
@@ -50,7 +66,7 @@
         
         .dark .cv-card {
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-            border: 1px solid #374151;
+            border: 1px solid #1b3545;
         }
     </style>
 </head>
@@ -297,7 +313,41 @@
 
     <script>
         // Theme toggling logic
-        tailwind.config = { darkMode: 'class' }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        violet: {
+                            50: '#f0f4ff',
+                            100: '#e1e9ff',
+                            200: '#cce0ff',
+                            300: '#a3c8ff',
+                            400: '#6e93f7',
+                            500: '#4070f4',
+                            600: '#254adb',
+                            700: '#1c38c2',
+                            800: '#172ca1',
+                            900: '#162880',
+                            950: '#0f174a',
+                        },
+                        gray: {
+                            50: '#F0F8FF',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#1b3545',
+                            800: '#152e3d',
+                            900: '#0E2431',
+                            950: '#08151d',
+                        }
+                    }
+                }
+            }
+        }
 
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');

@@ -15,13 +15,13 @@
 
     <style>
         :root {
-            --particle-color: rgba(100, 100, 100, 0.2);
-            --particle-line-rgb: 150, 150, 150;
+            --particle-color: rgba(64, 112, 244, 0.45);
+            --particle-line-rgb: 110, 147, 247;
         }
 
         .dark {
-            --particle-color: rgba(167, 139, 250, 0.3);
-            --particle-line-rgb: 140, 100, 255;
+            --particle-color: rgba(110, 147, 247, 0.55);
+            --particle-line-rgb: 64, 112, 244;
         }
 
         body {
@@ -30,44 +30,45 @@
 
         /* Custom scrollbar styles */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         .light ::-webkit-scrollbar-track {
-            background: #e5e7eb;
-            border-radius: 4px;
+            background: #f1f1f1;
+            border-radius: 12px;
         }
 
         .light ::-webkit-scrollbar-thumb {
-            background: #a78bfa;
-            border-radius: 4px;
+            background: #6e93f7;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
         .light ::-webkit-scrollbar-thumb:hover {
-            background: #8b5cf6;
+            background: #4070f4;
         }
 
         * {
             scrollbar-width: thin;
-            scrollbar-color: #a78bfa #e5e7eb;
+            scrollbar-color: #6e93f7 #f1f1f1;
         }
 
         .dark * {
-            scrollbar-color: #6d28d9 #1f2937;
+            scrollbar-color: #4070f4 #0E2431;
         }
 
         .dark ::-webkit-scrollbar-track {
-            background: #1f2937;
-            border-radius: 4px;
+            background: #0E2431;
+            border-radius: 12px;
         }
 
         .dark ::-webkit-scrollbar-thumb {
-            background: #6d28d9;
-            border-radius: 4px;
+            background: #4070f4;
+            border-radius: 12px;
         }
 
         .dark ::-webkit-scrollbar-thumb:hover {
-            background: #7c3aed;
+            background: #6e93f7;
         }
 
         /* Specific container scrollbar for projects */
@@ -91,21 +92,21 @@
         }
 
         .purple-glow {
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4), 0 0 5px rgba(139, 92, 246, 0.6);
+            box-shadow: 0 0 15px rgba(64, 112, 244, 0.4), 0 0 5px rgba(64, 112, 244, 0.6);
         }
 
         .purple-glow:hover {
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6), 0 0 10px rgba(139, 92, 246, 0.8);
+            box-shadow: 0 0 25px rgba(64, 112, 244, 0.6), 0 0 10px rgba(64, 112, 244, 0.8);
         }
 
         .light .card-glow:hover {
-            border-color: rgba(167, 139, 250, 0.6);
-            box-shadow: 0 0 20px rgba(167, 139, 250, 0.2);
+            border-color: rgba(110, 147, 247, 0.6);
+            box-shadow: 0 0 20px rgba(110, 147, 247, 0.2);
         }
 
         .dark .card-glow:hover {
-            border-color: rgba(167, 139, 250, 0.4);
-            box-shadow: 0 0 15px rgba(167, 139, 250, 0.1);
+            border-color: rgba(110, 147, 247, 0.4);
+            box-shadow: 0 0 15px rgba(110, 147, 247, 0.1);
         }
 
         .fade-in-section {
@@ -123,7 +124,7 @@
             display: inline-block;
             width: 3px;
             height: 1.7rem;
-            background-color: #a78bfa;
+            background-color: #4070f4;
             animation: blink 1s infinite;
             margin-left: 4px;
             vertical-align: middle;
@@ -138,11 +139,11 @@
             position: relative;
             padding-left: 3rem;
             padding-bottom: 2rem;
-            border-left: 2px solid #d1d5db;
+            border-left: 2px solid #e5e7eb;
         }
 
         .dark .timeline-item {
-            border-left-color: #374151;
+            border-left-color: #1b3545;
         }
 
         .timeline-item:last-child {
@@ -155,9 +156,9 @@
             top: 4px;
             height: 1rem;
             width: 1rem;
-            background-color: #6d28d9;
+            background-color: #4070f4;
             border-radius: 50%;
-            border: 2px solid #a78bfa;
+            border: 2px solid #6e93f7;
         }
     </style>
 </head>
@@ -602,6 +603,8 @@
                     
                     <div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-gray-50 dark:from-gray-900/50 to-transparent z-10 pointer-events-none rounded-b-xl"></div>
                 </div>
+
+
             </div>
         </section>
 
@@ -695,6 +698,38 @@
     <script>
 tailwind.config = {
     darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                violet: {
+                    50: '#f0f4ff',
+                    100: '#e1e9ff',
+                    200: '#cce0ff',
+                    300: '#a3c8ff',
+                    400: '#6e93f7',
+                    500: '#4070f4',
+                    600: '#254adb',
+                    700: '#1c38c2',
+                    800: '#172ca1',
+                    900: '#162880',
+                    950: '#0f174a',
+                },
+                gray: {
+                    50: '#F0F8FF',
+                    100: '#f3f4f6',
+                    200: '#e5e7eb',
+                    300: '#d1d5db',
+                    400: '#9ca3af',
+                    500: '#6b7280',
+                    600: '#4b5563',
+                    700: '#1b3545',
+                    800: '#152e3d',
+                    900: '#0E2431',
+                    950: '#08151d',
+                }
+            }
+        }
+    }
 }
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -783,9 +818,25 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.height = container.clientHeight;
     }
 
+    const codeSymbols = ['0', '1', ';', '{', '}', '<', '>', '&', '*', '[', ']'];
+
     class Particle {
-        constructor(x, y, dX, dY, size, color) { this.x = x; this.y = y; this.directionX = dX; this.directionY = dY; this.size = size; this.color = color; }
-        draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
+        constructor(x, y, dX, dY, size, color) {
+            this.x = x;
+            this.y = y;
+            this.directionX = dX;
+            this.directionY = dY;
+            this.size = size;
+            this.color = color;
+            this.symbol = codeSymbols[Math.floor(Math.random() * codeSymbols.length)];
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.font = `bold ${Math.floor(this.size * 3) + 8}px monospace`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(this.symbol, this.x, this.y);
+        }
         update() {
             if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
             if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
@@ -854,6 +905,8 @@ document.addEventListener('DOMContentLoaded', () => {
     toTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+
 });
     </script>
 </body>
