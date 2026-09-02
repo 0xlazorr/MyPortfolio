@@ -1,379 +1,421 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazarus Ebi | Embedded Systems CV</title>
+    <title>Lazarus Ebi (0xlazorr) | Cybersecurity & Software Engineer CV</title>
+    <meta name="description" content="Curriculum Vitae of Lazarus Ebi — Cybersecurity Engineer, Software Engineer, and Systems Security Researcher.">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .light ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 12px;
-        }
-
-        .light ::-webkit-scrollbar-thumb {
-            background: #6e93f7;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .light ::-webkit-scrollbar-thumb:hover {
-            background: #4070f4;
-        }
-
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #6e93f7 #f1f1f1;
-        }
-
-        .dark * {
-            scrollbar-color: #4070f4 #0E2431;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #0E2431;
-            border-radius: 12px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #4070f4;
-            border-radius: 12px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #6e93f7;
-        }
-
-        .cv-card {
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-        }
-        
-        .dark .cv-card {
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-            border: 1px solid #1b3545;
-        }
-    </style>
-</head>
-
-<body class="bg-gray-100 text-gray-800 dark:bg-gray-950 dark:text-gray-300 py-10 px-4 md:px-10">
-
-    <div class="max-w-4xl mx-auto flex justify-between items-center mb-8">
-        <a href="index.html" class="flex items-center gap-2 text-violet-600 dark:text-violet-400 hover:text-violet-800 dark:hover:text-violet-300 font-semibold transition-colors">
-            <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
-        </a>
-        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 bg-white dark:bg-gray-900 shadow-sm border border-gray-200 dark:border-gray-700">
-            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-            </svg>
-            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 10.607a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-            </svg>
-        </button>
-    </div>
-
-    <main class="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-xl cv-card overflow-hidden">
-        
-        <div class="bg-violet-600 px-8 py-10 border-b-4 border-violet-800 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Lazarus Ebi <span class="text-xs text-violet-300 ml-1 font-normal" title="Citation"></span></h1>
-                <p class="text-xl text-violet-200 mb-4 font-light">Embedded Software Engineer <span class="text-xs text-violet-300 ml-1 font-normal" title="Citation"></span></p>
-                <div class="flex flex-col md:flex-row items-center md:items-start gap-4 text-white text-sm">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i> lazorronchain@gmail.com</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-phone"></i> +2349084440081 <span class="text-[10px] text-violet-300" title="Citation"></span></span>
-                    <span class="flex items-center gap-2"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/Lazarus-ebi <span class="text-[10px] text-violet-300" title="Citation"></span></span>
-                </div>
-            </div>
-            
-            <div class="flex-shrink-0">
-                <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white/20 shadow-xl bg-violet-800 flex items-center justify-center">
-                    
-                    <span class="absolute inset-0 flex items-center justify-center text-3xl font-bold text-white z-0">LE</span>
-                    
-                    <img src="Media/MyHeadshot.jpg" 
-                         alt="Lazarus Ebi" 
-                         class="relative z-10 w-full h-full object-cover" 
-                         onerror="this.style.opacity='0';">
-                </div>
-            </div>
-            </div>
-
-        <div class="p-8 md:p-12 space-y-10">
-            
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-violet-500 pb-2 mb-6 inline-block">Work Experience</h2>
-                
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Ebitechnologies</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2024 to present</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">IT Assistant & Junior Embedded Developer</p>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
-                        <li>Managed internal IT systems and network infrastructure reliability.</li>
-                        <li>Assisted engineering teams with testing RTOS-based firmware for STM32 microcontrollers.</li>
-                        <li>Supported peripheral interfacing, device driver adjustments, and hardware-in-the-loop setup.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">BEMINT-Empowering Africans Program</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2022 to Present</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Technical Member</p>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
-                        <li>Collaborated with community members on low-level system designs and open-source software.</li>
-                        <li>Participated in systems programming studies, focusing on memory management and security patterns.</li>
-                        <li>Contributed to security threat reviews and logic modeling for the "Votask" project.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Industrial Training Fund (ITF)</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2023-2024</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Student Intern</p>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
-                        <li>Instructed students on fundamental electronics, microcontrollers, and bare-metal programming.</li>
-                        <li>Assisted in assembling, debugging, and maintaining laboratory hardware training modules.</li>
-                        <li>Developed Arduino demonstration routines to help students understand hardware interrupts and timers.</li>
-                    </ul>
-                </div>
-
-                <div class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Listaac Academy</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2021-2022</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Instructor Intern (Python & SQL)</p>
-                    <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
-                        <li>Taught basic Python syntax, data structures, and algorithms to beginning students.</li>
-                        <li>Introduced relational database concepts and guided students in writing SQL queries.</li>
-                        <li>Created assignments, designed practice schemas, and held 1-on-1 mentorship sessions.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-violet-500 pb-2 mb-6 inline-block">Education History</h2>
-                
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Federal University of Technology Akure (FUTA)</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2022 - 2027 (Expected)</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-2">B.Tech in Software Engineering</p>
-                </div>
-
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Dairy Farm Senior Secondary School</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">Class of 2021</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Senior Secondary School Certificate</p>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 text-gray-600 dark:text-gray-400 text-sm">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-trophy text-yellow-500"></i> Awardee, Best Graduating Student</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-medal text-yellow-500"></i> Top 7 Physics student in the country</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-award text-yellow-500"></i> Best Food And Technology Student</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-book text-violet-500"></i> Librarian</li>
-                    </ul>
-                </div>
-
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Yewa Junior High School</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2015 - 2018</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Junior Secondary School Certificate (3-Year Program)</p>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 text-gray-600 dark:text-gray-400 text-sm">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-clock text-violet-500"></i> Time Keeper</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-trophy text-yellow-500"></i> Spelling Bee & Debating Club Leader</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-file-signature text-violet-500"></i> Secretary, JET Club</li>
-                    </ul>
-                </div>
-
-                <div class="mb-8 relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Irepodun Nursery and Primary School</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2009 - 2015</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-3">Primary School Leaving Certificate</p>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 text-gray-600 dark:text-gray-400 text-sm">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-award text-violet-500"></i> Senior Prefect</li>
-                    </ul>
-                </div>
-
-                <div class="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
-                    <div class="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
-                    <div class="flex justify-between flex-wrap gap-2 mb-1">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Complete Confidence Nursery School</h3>
-                        <span class="bg-violet-100 dark:bg-violet-900/50 text-violet-600 dark:text-violet-300 text-xs font-semibold px-3 py-1 rounded-full h-fit">2006 - 2009</span>
-                    </div>
-                    <p class="text-violet-600 dark:text-violet-400 font-medium mb-2">Nursery School Education</p>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-violet-500 pb-2 mb-6 inline-block">Relevant Skills</h2>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">C</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">C++</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Rust</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Python</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Embedded Linux</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">RTOS</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">ARM Cortex-M / STM32</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Git</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Hardware Interfacing</span>
-                    <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm">Secure Coding</span>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-violet-500 pb-2 mb-6 inline-block">Other Relevant Certifications</h2>
-                <ul class="space-y-3">
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">C Programming Language Certified Associate (CLA)</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Embedded Systems & Real-Time Operating Systems (RTOS)</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Introduction to Systems Programming in Rust</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Linux Kernel & Command Line Fundamentals</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Microcontroller Interfacing & Hardware Prototyping</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Version Control with Git</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Python Data Structures & Algorithms</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">AWS Cloud Practitioner Foundations</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Responsive Web Development & Design</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Effective Leadership & Team Management</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-violet-500"></i>
-                        <span class="font-semibold text-gray-900 dark:text-white">Professional Presentations & Technical Communication</span>
-                    </li>
-                </ul>
-            </section>
-
-        </div>
-    </main>
-
-    <footer class="mt-12 text-center text-sm text-gray-500 dark:text-gray-400 pb-8">
-        &copy; 2026 Lazarus Ebi. All rights reserved.
-    </footer>
-
     <script>
-        // Theme toggling logic
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        violet: {
-                            50: '#f0f4ff',
-                            100: '#e1e9ff',
-                            200: '#cce0ff',
-                            300: '#a3c8ff',
-                            400: '#6e93f7',
-                            500: '#4070f4',
-                            600: '#254adb',
-                            700: '#1c38c2',
-                            800: '#172ca1',
-                            900: '#162880',
-                            950: '#0f174a',
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            950: '#022c22',
                         },
-                        gray: {
-                            50: '#F0F8FF',
-                            100: '#f3f4f6',
-                            200: '#e5e7eb',
-                            300: '#d1d5db',
-                            400: '#9ca3af',
-                            500: '#6b7280',
-                            600: '#4b5563',
-                            700: '#1b3545',
-                            800: '#152e3d',
-                            900: '#0E2431',
-                            950: '#08151d',
+                        zinc: {
+                            850: '#1e1e24',
+                            900: '#121215',
+                            950: '#09090b',
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     }
                 }
             }
         }
+    </script>
 
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Perfectly Uniform Global Theme Transition */
+        html.theme-transitioning,
+        html.theme-transitioning *,
+        html.theme-transitioning *::before,
+        html.theme-transitioning *::after {
+            transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out, fill 200ms ease-out, stroke 200ms ease-out, box-shadow 200ms ease-out !important;
+            transition-delay: 0ms !important;
+        }
+
+        button, a.btn, .pressable {
+            transition: transform 150ms var(--ease-out), background-color 150ms var(--ease-out), border-color 150ms var(--ease-out), color 150ms var(--ease-out);
+            will-change: transform;
+        }
+
+        button:active, a.btn:active, .pressable:active {
+            transform: scale(0.97);
+        }
+
+        .cv-card {
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .cv-card {
+                box-shadow: none !important;
+                border: none !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 9999px;
+            border: 2px solid #09090b;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 py-10 px-4 sm:px-6 lg:px-8">
+
+    <!-- Top Action Bar (No-Print) -->
+    <div class="max-w-4xl mx-auto flex justify-between items-center mb-8 no-print">
+        <a href="index.html" class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors pressable">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Portfolio</span>
+        </a>
+        
+        <div class="flex items-center gap-3">
+            <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-400 transition-colors flex items-center gap-1.5 pressable shadow-xs">
+                <i class="fa-solid fa-print"></i>
+                <span>Print / PDF</span>
+            </button>
+
+            <button id="theme-toggle" class="p-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 hover:text-emerald-400 transition-colors pressable shadow-xs" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon theme-icon-dark text-sm"></i>
+                <i class="fa-solid fa-sun theme-icon-light text-sm hidden"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main CV Document Paper -->
+    <main class="max-w-4xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl cv-card overflow-hidden border border-zinc-200 dark:border-zinc-800">
+        
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 text-white p-8 sm:p-10 border-b border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left flex-1">
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium mb-3">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    SECURITY RESEARCHER & SOFTWARE ENGINEER
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-1">
+                    Lazarus Ebi <span class="text-xs text-zinc-500 font-mono font-normal">(0xlazorr)</span>
+                </h1>
+                <p class="text-base text-zinc-400 mb-5 font-light">
+                    Vulnerability Research &bull; Software Engineering &bull; Binary Exploitation &bull; Linux Kernel & eBPF
+                </p>
+
+                <!-- Contact Pills -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs font-mono text-zinc-300">
+                    <button onclick="copyContact('lazorronchain@gmail.com', 'Email copied!')" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800/80 hover:bg-zinc-700/80 text-zinc-200 transition-colors pressable">
+                        <i class="fa-solid fa-envelope text-emerald-400"></i>
+                        <span>lazorronchain@gmail.com</span>
+                    </button>
+                    <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800/80 hover:bg-zinc-700/80 text-zinc-200 transition-colors pressable">
+                        <i class="fa-brands fa-github text-emerald-400"></i>
+                        <span>github.com/0xlazorr</span>
+                    </a>
+                    <a href="https://linkedin.com/in/lazarus-ebi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800/80 hover:bg-zinc-700/80 text-zinc-200 transition-colors pressable">
+                        <i class="fa-brands fa-linkedin text-emerald-400"></i>
+                        <span>linkedin.com/in/lazarus-ebi</span>
+                    </a>
+                    <button onclick="copyContact('0x4A8E7D1B99F02C34', 'PGP Key ID copied!')" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800/80 hover:bg-zinc-700/80 text-zinc-200 transition-colors pressable">
+                        <i class="fa-solid fa-key text-emerald-400"></i>
+                        <span>PGP: 0x4A8E7D1B99F02C34</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-shrink-0">
+                <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-emerald-500/40 p-1 bg-zinc-950 shadow-xl">
+                    <img src="Media/MyHeadshot.jpg" 
+                         alt="Lazarus Ebi" 
+                         class="w-full h-full object-cover rounded-full" 
+                         onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&fit=crop&q=80'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Content -->
+        <div class="p-8 sm:p-12 space-y-10">
+            
+            <!-- Profile Summary -->
+            <section>
+                <h2 class="text-base font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b-2 border-emerald-500 pb-1 mb-4 inline-block font-mono">
+                    Professional Profile
+                </h2>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    Software Engineer and low-level security researcher specializing in binary vulnerability analysis (heap/stack memory corruption, ROP chain synthesis), proactive application defense (OWASP Top 10), and Linux kernel security monitoring via eBPF. Experienced in auditing complex codebases, hardening distributed cloud/network infrastructures, designing zero-trust proxies with mutual TLS (mTLS), and developing resilient, memory-safe tooling in Rust and C.
+                </p>
+            </section>
+
+            <!-- Technical Skills & Arsenal -->
+            <section>
+                <h2 class="text-base font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b-2 border-emerald-500 pb-1 mb-4 inline-block font-mono">
+                    Technical Arsenal & Core Competencies
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60">
+                        <h3 class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase font-mono mb-2">Offensive Security</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Burp Suite Pro, Metasploit, Nmap, Wireshark, SQLmap, FFUF, Gobuster, Hydra, Nikto, OWASP ZAP.
+                        </p>
+                    </div>
+
+                    <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60">
+                        <h3 class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase font-mono mb-2">Binary & Reverse Eng</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Ghidra, GDB / Pwndbg, Pwntools, Radare2, IDA Free, ROPgadget, Frida, ELF binary analysis.
+                        </p>
+                    </div>
+
+                    <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60">
+                        <h3 class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase font-mono mb-2">Languages</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            Rust (Memory Safe), C, C++, Python, x86_64 / ARM Assembly, Bash scripting, Go, SQL.
+                        </p>
+                    </div>
+
+                    <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700/60">
+                        <h3 class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase font-mono mb-2">Defensive & Kernel</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                            eBPF probes, SecComp-BPF, Suricata, Linux Hardening, Docker Security, mTLS, Argon2, ChaCha20.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section>
+                <h2 class="text-base font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b-2 border-emerald-500 pb-1 mb-6 inline-block font-mono">
+                    Engineering & Security Experience
+                </h2>
+                
+                <div class="space-y-6">
+                    
+                    <!-- EbiTechnologies: Software Engineer -->
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Software Engineer</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2024 &mdash; Present</span>
+                        </div>
+                        <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-2">EbiTechnologies</p>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                            <li>Architecting resilient backend services, infrastructure security policies, and automated log telemetry pipelines.</li>
+                            <li>Executed vulnerability scanning and network traffic auditing to proactively detect unauthorized endpoints.</li>
+                            <li>Hardened server configurations and automated firewall policy enforcement with custom Python/Rust utilities.</li>
+                        </ul>
+                    </div>
+
+                    <!-- BEMINT: Beneficiary & Security Researcher -->
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Program Beneficiary & Security Researcher</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2022 &mdash; Present</span>
+                        </div>
+                        <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-2">BEMINT &mdash; Empowering Africans Program</p>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                            <li>Selected program beneficiary participating in advanced systems security, software engineering, and CTF competitions.</li>
+                            <li>Conducted vulnerability research, binary exploitation (pwn), reverse engineering, and threat modeling for open-source initiatives.</li>
+                            <li>Collaborated with engineering peers on memory corruption mitigations and safe systems programming in Rust.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Systems Training Center -->
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Cyber Defense & Systems Intern</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2023 &mdash; 2024</span>
+                        </div>
+                        <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-2">Systems Training & Research Center</p>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                            <li>Demonstrated network sniffing, packet analysis (Wireshark), and network perimeter security to engineering cohorts.</li>
+                            <li>Maintained secure laboratory testbeds for educational exploit demonstrations and safe penetration testing exercises.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Listaac Academy -->
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Security Scripting & Database Intern</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2021 &mdash; 2022</span>
+                        </div>
+                        <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-2">Listaac Academy</p>
+                        <ul class="list-disc list-inside text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                            <li>Taught secure Python coding principles, input validation sanitization, and password hashing algorithms.</li>
+                            <li>Trained students on SQL injection vulnerabilities and implementation of parameterized database queries.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2 class="text-base font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b-2 border-emerald-500 pb-1 mb-6 inline-block font-mono">
+                    Education & Academic History
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">University Degree Candidate</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">2022 &mdash; 2027 (Expected)</span>
+                        </div>
+                        <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mb-1">B.Tech in Software Engineering</p>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                            Core Focus: Systems Security, Operating Systems, Cryptography, Database Management, and Algorithm Analysis.
+                        </p>
+                    </div>
+
+                    <div class="relative pl-6 border-l-2 border-emerald-500/30">
+                        <div class="absolute w-2.5 h-2.5 bg-emerald-500 rounded-full -left-[6px] top-1.5"></div>
+                        <div class="flex justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100">Senior Secondary Education</h3>
+                            <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">Class of 2021</span>
+                        </div>
+                        <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2">Senior Secondary School Certificate</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-trophy text-amber-500"></i> Best Graduating Student Awardee</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-medal text-amber-500"></i> National Academic Honors in Physics</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section>
+                <h2 class="text-base font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider border-b-2 border-emerald-500 pb-1 mb-4 inline-block font-mono">
+                    Certifications & Continuous Learning
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-700 dark:text-zinc-300">
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>C Programming Language Certified Associate (CLA)</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>Systems Programming & Memory Safety in Rust</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>Linux Kernel Security & Command Line Fundamentals</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>OWASP Top 10 Application Security & Threat Modeling</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>Applied Cryptography & Secure Protocol Implementation</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-emerald-500 text-base"></i>
+                        <span>AWS Cloud Security Foundations</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-xs font-mono text-zinc-500 no-print">
+        &copy; 2026 Lazarus Ebi (0xlazorr). All rights reserved.
+    </footer>
+
+    <!-- Toast / Notification container -->
+    <div id="cv-toast" class="fixed bottom-5 right-5 z-50 transform transition-all duration-200 opacity-0 translate-y-4 pointer-events-none px-4 py-2.5 rounded-lg bg-zinc-900 text-emerald-400 text-xs font-mono border border-emerald-500/40 shadow-xl"></div>
+
+    <script>
+        // Theme initialization
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        function updateIcons() {
+            const isDark = document.documentElement.classList.contains('dark');
+            document.querySelectorAll('.theme-icon-dark').forEach(el => el.classList.toggle('hidden', isDark));
+            document.querySelectorAll('.theme-icon-light').forEach(el => el.classList.toggle('hidden', !isDark));
+        }
+        updateIcons();
 
-            function updateThemeIcons() {
-                const isDark = document.documentElement.classList.contains('dark');
-                themeToggleLightIcon.classList.toggle('hidden', !isDark);
-                themeToggleDarkIcon.classList.toggle('hidden', isDark);
-            }
-
-            updateThemeIcons();
-
-            themeToggleBtn.addEventListener('click', () => {
-                const isDarkMode = document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-                updateThemeIcons();
-            });
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.add('theme-transitioning');
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcons();
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transitioning');
+            }, 200);
         });
+
+        function copyContact(text, msg) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('cv-toast');
+                toast.textContent = msg;
+                toast.classList.remove('opacity-0', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4');
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                }, 2200);
+            });
+        }
     </script>
 </body>
+
 </html>
