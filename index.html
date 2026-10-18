@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazorr</title>
+    <meta name="description" content="lazorr — Offensive Security Engineer, Red Teamer, Network &amp; Wireless Exploitation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --bg-subtle: #121215;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --border: #27272a;
+            --border-hover: #3f3f46;
+            --accent: #10b981;
+            --accent-dim: rgba(16, 185, 129, 0.12);
+        }
+
+        html.light {
+            --bg: #ffffff;
+            --bg-subtle: #f4f4f5;
+            --text-main: #18181b;
+            --text-muted: #52525b;
+            --text-dim: #71717a;
+            --border: #e4e4e7;
+            --border-hover: #d4d4d8;
+            --accent: #059669;
+            --accent-dim: rgba(5, 150, 105, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
+            line-height: 1.65;
+            padding: 48px 20px 80px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 150ms ease, color 150ms ease;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 36px;
+        }
+
+        .identity {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .role {
+            font-size: 13px;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 120ms ease;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--text-main);
+        }
+
+        /* Typography & Content */
+        p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: underline;
+            text-decoration-color: var(--border);
+            text-underline-offset: 3px;
+            transition: all 120ms ease;
+        }
+
+        a:hover {
+            text-decoration-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Links row */
+        .links-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .links-row a {
+            text-decoration: none;
+            color: var(--text-muted);
+        }
+
+        .links-row a:hover {
+            color: var(--accent);
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dim);
+            margin: 40px 0 16px;
+        }
+
+        /* Projects List */
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .project-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-name:hover {
+            color: var(--accent);
+        }
+
+        .project-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Experience List */
+        .exp-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+
+        .exp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .exp-role {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .exp-company {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .exp-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            flex-shrink: 0;
+        }
+
+        .exp-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            margin-bottom: 0;
+        }
+
+        /* Stack / Focus list */
+        .tags-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 3px 8px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        /* Contact & Copy */
+        .copy-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-main);
+            cursor: pointer;
+            user-select: none;
+            margin-top: 8px;
+            transition: all 120ms ease;
+        }
+
+        .copy-box:hover {
+            border-color: var(--accent);
+        }
+
+        .copy-hint {
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="identity">
+                <img src="Media/MyHeadshot.jpg" alt="lazorr" class="avatar" onerror="this.style.display='none'">
+                <div>
+                    <h1 class="name">
+                        lazorr
+                        <span class="status-dot" title="Active"></span>
+                    </h1>
+                    <p class="role">offensive security &bull; red teaming &bull; network &amp; wireless exploitation</p>
+                </div>
+            </div>
+            <button id="theme-btn" class="theme-btn" aria-label="Toggle theme">theme</button>
+        </header>
+
+        <!-- Quick Links -->
+        <nav class="links-row">
+            <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer">github</a>
+            <a href="https://linkedin.com/in/lazarus-ebi" target="_blank" rel="noopener noreferrer">linkedin</a>
+            <a href="https://x.com/0xlazorr" target="_blank" rel="noopener noreferrer">x.com</a>
+            <a href="cv.html">cv</a>
+        </nav>
+
+        <!-- Intro Narrative -->
+        <main>
+            <p>
+                Offensive Security Engineer &amp; Red Teamer specializing in <strong>network penetration</strong>,
+                <strong>wireless exploitation (802.11)</strong>, and <strong>low-level systems exploitation</strong>.
+            </p>
+            <p>
+                I break into perimeters, networks, and systems. My work centers on <strong>wireless attacks
+                    (WPA2/WPA3 handshake &amp; PMKID capture, evil twin rogue APs, 802.11 frame injection)</strong>,
+                <strong>stealth network infiltration &amp; lateral pivoting</strong>, <strong>custom C2 agent
+                    architecture</strong>, and <strong>binary exploitation (x86_64 ROP, Linux privilege escalation)</strong>.
+                I build fast offensive tooling in <strong>Python</strong>, <strong>C</strong>, <strong>Rust</strong>,
+                and <strong>Bash</strong> to simulate sophisticated adversaries and expose vulnerabilities.
+            </p>
+
+            <!-- Projects -->
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="item-list">
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Automated 802.11 Wi-Fi Attack &amp; Handshake Sniffer <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Scapy / C</span>
+                    </div>
+                    <p class="project-desc">
+                        Automated wireless penetration tool executing deauth attacks, PMKID capture, and WPA2/WPA3 4-way handshake harvesting.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Evil Twin Rogue AP &amp; Captive Portal Framework <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Bash / Python / hostapd</span>
+                    </div>
+                    <p class="project-desc">
+                        Automated rogue access point stager with DNS spoofing, credential harvesting captive portals, and channel deauthentication.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Stealth Network Infiltration &amp; Lateral Pivoting Tool <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Go / Raw Sockets</span>
+                    </div>
+                    <p class="project-desc">
+                        Offensive network pivoting agent executing ARP/DNS poisoning, automated port discovery, and encrypted firewall traversal.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Adversary Emulation &amp; C2 Agent <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Rust / C / x86_64</span>
+                    </div>
+                    <p class="project-desc">
+                        Modular red-team command-and-control framework featuring in-memory shellcode execution, process injection, and encrypted beaconing.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Linux Kernel Rootkit &amp; Privilege Escalation <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">C / Linux Kernel</span>
+                    </div>
+                    <p class="project-desc">
+                        Offensive kernel module demonstrating syscall table hooking, credential structure overwrites (commit_creds), and stealth process hiding.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Binary Exploitation &amp; Memory Corruption Testbed <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">C / Assembly / GDB</span>
+                    </div>
+                    <p class="project-desc">
+                        Suite of low-level exploits demonstrating return-oriented programming (ROP), format string bugs, and heap metadata manipulation.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Network Traffic Sniffer &amp; Covert Channel Analyzer <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Rust / AF_PACKET</span>
+                    </div>
+                    <p class="project-desc">
+                        High-throughput raw socket packet analyzer inspecting covert timing channels, DNS exfiltration, and protocol anomalies.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Zero-Knowledge Cryptographic Vault <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Rust / Cryptography</span>
+                    </div>
+                    <p class="project-desc">
+                        Lightweight CLI secrets vault featuring Argon2id key derivation and ChaCha20-Poly1305 authenticated encryption.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/Msniffer.bot" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Market Sniffer Bot <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Solana</span>
+                    </div>
+                    <p class="project-desc">
+                        Real-time Solana token sniffer, honeypot safety auditor, and fast Jupiter DEX trading engine.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/chatters_council" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Chatters AI Council <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / AutoGen</span>
+                    </div>
+                    <p class="project-desc">
+                        Multi-agent Telegram deliberation system where 5 AI models debate, vote, and execute consensus trades.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/muzziko-bot" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Muzziko Music Downloader <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Telegram</span>
+                    </div>
+                    <p class="project-desc">
+                        Universal 320kbps audio extraction bot supporting YouTube, Spotify, and SoundCloud with synchronized lyrics.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <h2 class="section-title">Experience</h2>
+            <div class="item-list">
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div>
+                            <span class="exp-role">Offensive Security Engineer &amp; Red Teamer</span> &bull;
+                            <span class="exp-company">EbiTechnologies</span>
+                        </div>
+                        <span class="exp-date">2024 &mdash; Present</span>
+                    </div>
+                    <p class="exp-desc">
+                        Executing simulated adversary operations, network intrusion assessments, and wireless penetration tests. Developing custom C2 beacons, post-exploitation scripts, and automated lateral movement tooling in Python, C, and Rust.
+                    </p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div>
+                            <span class="exp-role">Volunteer &amp; Software Development Fellow</span> &bull;
+                            <span class="exp-company">BEMINT &mdash; Empowering Africans Program</span>
+                        </div>
+                        <span class="exp-date">2022 &mdash; Present</span>
+                    </div>
+                    <p class="exp-desc">
+                        Contributed volunteer services while building competencies in network protocols, systems programming, and technical communication. Collaborated on team projects and technical workshops.
+                    </p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div>
+                            <span class="exp-role">Penetration Testing &amp; Network Security Intern</span> &bull;
+                            <span class="exp-company">Industrial Training Fund (ITF)</span>
+                        </div>
+                        <span class="exp-date">2023 &mdash; 2024</span>
+                    </div>
+                    <p class="exp-desc">
+                        Conducted network vulnerability assessments, 802.11 wireless security audits (WPA2/WPA3 handshake captures), and internal penetration tests. Built defensive remediation scripts to patch exploited vectors.
+                    </p>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div>
+                            <span class="exp-role">Offensive Scripting &amp; Systems Intern</span> &bull;
+                            <span class="exp-company">Listaac Academy</span>
+                        </div>
+                        <span class="exp-date">2021 &mdash; 2022</span>
+                    </div>
+                    <p class="exp-desc">
+                        Taught offensive Python scripting, socket programming, network packet crafting (Scapy), and fundamental buffer overflow exploitation to incoming students.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Focus & Stack -->
+            <h2 class="section-title">Core Focus</h2>
+            <div class="tags-group">
+                <span class="tag">Wireless Attacks (802.11)</span>
+                <span class="tag">Network Infiltration</span>
+                <span class="tag">Red Teaming</span>
+                <span class="tag">Binary Exploitation (ROP)</span>
+                <span class="tag">C2 Frameworks</span>
+                <span class="tag">Privilege Escalation</span>
+                <span class="tag">Packet Injection</span>
+                <span class="tag">Lateral Movement &amp; Pivoting</span>
+                <span class="tag">Reverse Engineering</span>
+                <span class="tag">Linux Kernel</span>
+                <span class="tag">Python</span>
+                <span class="tag">C</span>
+                <span class="tag">Rust</span>
+                <span class="tag">Bash</span>
+                <span class="tag">Assembly (x86_64)</span>
+                <span class="tag">Aircrack-ng / Wireshark</span>
+                <span class="tag">GDB / Ghidra</span>
+            </div>
+
+            <!-- Contact -->
+            <h2 class="section-title">Contact</h2>
+            <p>
+                Feel free to reach out for offensive security assessments, red teaming engagements, wireless security audits, or exploit research collaborations.
+            </p>
+            <div class="copy-box" id="copy-email" onclick="copyEmail()">
+                <span id="email-text">lazorronchain@gmail.com</span>
+                <span class="copy-hint" id="copy-hint">(click to copy)</span>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <span>lazorr</span>
+            <span>&copy; 2026</span>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeBtn = document.getElementById('theme-btn');
+        function initTheme() {
+            if (localStorage.theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                themeBtn.textContent = 'dark';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                themeBtn.textContent = 'light';
+            }
+        }
+        initTheme();
+
+        themeBtn.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light');
+            document.documentElement.classList.toggle('dark', !isLight);
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            themeBtn.textContent = isLight ? 'dark' : 'light';
+        });
+
+        // Copy email
+        function copyEmail() {
+            const email = 'lazorronchain@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const hint = document.getElementById('copy-hint');
+                hint.textContent = 'copied!';
+                hint.style.color = 'var(--accent)';
+                setTimeout(() => {
+                    hint.textContent = '(click to copy)';
+                    hint.style.color = 'var(--text-dim)';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lazorr — Curriculum Vitae</title>
+    <meta name="description" content="Curriculum Vitae of lazorr — Cybersecurity & Software Engineer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --bg-subtle: #121215;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --border: #27272a;
+            --accent: #10b981;
+        }
+
+        html.light {
+            --bg: #ffffff;
+            --bg-subtle: #f4f4f5;
+            --text-main: #18181b;
+            --text-muted: #52525b;
+            --text-dim: #71717a;
+            --border: #e4e4e7;
+            --accent: #059669;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 40px 20px 80px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+
+        .top-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .top-nav a:hover {
+            color: var(--accent);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        button.btn-sm {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        button.btn-sm:hover {
+            color: var(--text-main);
+            border-color: var(--accent);
+        }
+
+        .header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .title {
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .contacts a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .contacts a:hover {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dim);
+            margin: 28px 0 14px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .entry {
+            margin-bottom: 16px;
+        }
+
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .entry-meta {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+
+            .top-nav {
+                display: none !important;
+            }
+
+            * {
+                color: black !important;
+                border-color: #ddd !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <a href="index.html">&larr; Back to home</a>
+            <div class="actions">
+                <button class="btn-sm" onclick="window.print()">Print / PDF</button>
+                <button id="theme-btn" class="btn-sm">theme</button>
+            </div>
+        </div>
+
+        <header class="header">
+            <h1 class="name">lazorr</h1>
+            <p class="title">Offensive Security Engineer &bull; Red Teamer &bull; Network &amp; Wireless Penetration Tester</p>
+            <div class="contacts">
+                <a href="mailto:lazorronchain@gmail.com">lazorronchain@gmail.com</a>
+                <span>&bull;</span>
+                <a href="https://github.com/0xlazorr" target="_blank" rel="noopener noreferrer">github.com/0xlazorr</a>
+                <span>&bull;</span>
+                <a href="https://linkedin.com/in/lazarus-ebi" target="_blank"
+                    rel="noopener noreferrer">linkedin.com/in/lazarus-ebi</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Summary</h2>
+            <p>
+                Offensive Security Engineer and Red Teamer specializing in wireless penetration testing (802.11 WPA2/WPA3, rogue APs),
+                network infiltration, lateral movement, and low-level systems exploitation (x86_64 ROP, Linux kernel privilege escalation).
+                Software Engineering student at the Federal University of Technology Akure (FUTA) experienced in building custom C2 frameworks,
+                raw packet injection tooling (AF_PACKET/Scapy), and automated offensive tools in Python, C, Rust, and Bash.
+            </p>
+        </section>
+
+        <section>
+            <h2>Work Experience</h2>
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Offensive Security Engineer &amp; Red Teamer</span>
+                    <span class="entry-meta">2024 &mdash; Present</span>
+                </div>
+                <div class="entry-meta">EbiTechnologies</div>
+                <ul>
+                    <li>Executing simulated adversary operations, network intrusion assessments, and wireless penetration tests.</li>
+                    <li>Developing custom C2 beacons, post-exploitation scripts, and automated lateral movement tooling in Python, C, and Rust.</li>
+                    <li>Conducting perimeter attack simulations and delivering actionable remediation guidance to infrastructure teams.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Volunteer &amp; Software Development Fellow</span>
+                    <span class="entry-meta">2022 &mdash; Present</span>
+                </div>
+                <div class="entry-meta">BEMINT &mdash; Empowering Africans Program</div>
+                <ul>
+                    <li>Contributed volunteer services across community empowerment and technical education initiatives.</li>
+                    <li>Developed core software engineering skills through hands-on systems coding and project collaboration.</li>
+                    <li>Studied network protocols, offensive methodology, and technical reporting workflows.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Penetration Testing &amp; Network Security Intern</span>
+                    <span class="entry-meta">2023 &mdash; 2024</span>
+                </div>
+                <div class="entry-meta">Industrial Training Fund (ITF)</div>
+                <ul>
+                    <li>Conducted network vulnerability assessments, 802.11 wireless security audits (WPA2/WPA3 handshake captures), and internal penetration tests.</li>
+                    <li>Researched privilege escalation vectors, engineered offensive automation scripts, and validated system defense controls.</li>
+                    <li>Maintained secure laboratory testbeds for binary exploit demonstration and wireless packet injection analysis.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Offensive Scripting &amp; Systems Intern</span>
+                    <span class="entry-meta">2021 &mdash; 2022</span>
+                </div>
+                <div class="entry-meta">Listaac Academy</div>
+                <ul>
+                    <li>Taught offensive Python scripting, socket programming, network packet crafting (Scapy), and fundamental buffer overflow exploitation to students.</li>
+                    <li>Guided students on memory layout, stack frames, shellcode mechanics, and defensive systems scripting.</li>
+                    <li>Created hands-on laboratory exercises, sample vulnerable binaries, and held 1-on-1 mentoring sessions.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Selected Projects</h2>
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Automated 802.11 Wi-Fi Attack &amp; Handshake Sniffer</span>
+                    <span class="entry-meta">Python / Scapy / C</span>
+                </div>
+                <p>Automated wireless penetration tool executing deauth attacks, PMKID capture, and WPA2/WPA3 4-way handshake harvesting.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Evil Twin Rogue AP &amp; Captive Portal Framework</span>
+                    <span class="entry-meta">Bash / Python / hostapd</span>
+                </div>
+                <p>Automated rogue access point stager with DNS spoofing, credential harvesting captive portals, and channel deauthentication.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Stealth Network Infiltration &amp; Lateral Pivoting Tool</span>
+                    <span class="entry-meta">Go / Raw Sockets</span>
+                </div>
+                <p>Offensive network pivoting agent executing ARP/DNS poisoning, automated port discovery, and encrypted firewall traversal.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Adversary Emulation &amp; C2 Agent</span>
+                    <span class="entry-meta">Rust / C / x86_64</span>
+                </div>
+                <p>Modular red-team command-and-control framework featuring in-memory shellcode execution, process injection, and encrypted beaconing.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Linux Kernel Rootkit &amp; Privilege Escalation</span>
+                    <span class="entry-meta">C / Linux Kernel</span>
+                </div>
+                <p>Offensive kernel module demonstrating syscall table hooking, credential structure overwrites (commit_creds), and stealth process hiding.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Binary Exploitation &amp; Memory Corruption Testbed</span>
+                    <span class="entry-meta">C / Assembly / GDB</span>
+                </div>
+                <p>Suite of low-level exploits demonstrating return-oriented programming (ROP), format string bugs, and heap metadata manipulation.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Network Traffic Sniffer &amp; Covert Channel Analyzer</span>
+                    <span class="entry-meta">Rust / AF_PACKET</span>
+                </div>
+                <p>High-throughput raw socket packet analyzer inspecting covert timing channels, DNS exfiltration, and protocol anomalies.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Zero-Knowledge Cryptographic Vault</span>
+                    <span class="entry-meta">Rust / Cryptography</span>
+                </div>
+                <p>Lightweight CLI secrets vault featuring Argon2id key derivation and ChaCha20-Poly1305 authenticated encryption.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Market Sniffer Bot</span>
+                    <span class="entry-meta">Python / Solana</span>
+                </div>
+                <p>Real-time Solana token sniffer, honeypot safety auditor, and fast Jupiter DEX trading engine.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Chatters AI Council</span>
+                    <span class="entry-meta">Python / AutoGen</span>
+                </div>
+                <p>Multi-agent Telegram deliberation system where 5 AI models debate, vote, and execute consensus trades.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Muzziko Music Downloader</span>
+                    <span class="entry-meta">Python / Telegram</span>
+                </div>
+                <p>Universal 320kbps audio extraction bot supporting YouTube, Spotify, and SoundCloud with synchronized lyrics.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Federal University of Technology Akure (FUTA)</span>
+                    <span class="entry-meta">2022 &mdash; 2027 (Expected)</span>
+                </div>
+                <p>B.Tech in Software Engineering &bull; Focus on Offensive Security, Network Penetration Testing, Wireless Security (802.11), Binary Exploitation, and Low-Level Network Protocols.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li>Certified Wireless Penetration Tester (802.11 Wi-Fi Hacking)</li>
+                <li>Offensive Security &amp; Network Penetration Testing</li>
+                <li>Binary Exploitation &amp; Memory Safety in C and Rust</li>
+                <li>Linux Kernel Internals &amp; Privilege Escalation</li>
+                <li>Reverse Engineering &amp; Malware Analysis (GDB / Ghidra)</li>
+                <li>Low-Level Network Protocol Engineering &amp; Packet Injection</li>
+                <li>Applied Cryptography &amp; Secure Protocol Implementation</li>
+                <li>Version Control with Git</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        function initTheme() {
+            if (localStorage.theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                themeBtn.textContent = 'dark';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                themeBtn.textContent = 'light';
+            }
+        }
+        initTheme();
+
+        themeBtn.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.toggle('light');
+            document.documentElement.classList.toggle('dark', !isLight);
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            themeBtn.textContent = isLight ? 'dark' : 'light';
+        });
+    </script>
+</body>
+
+</html>
