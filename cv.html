@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lazorr — Curriculum Vitae</title>
-    <meta name="description" content="Curriculum Vitae of lazorr (Lazarus Ebi) — Security Tooling &amp; Systems Engineer.">
+    <meta name="description" content="Curriculum Vitae of lazorr (Lazarus Ebi) — Systems Security &amp; Low-Level Tooling.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -206,7 +206,7 @@
 
         <header class="header">
             <h1 class="name">lazorr</h1>
-            <p class="title">Security Tooling &bull; Systems Programming &bull; Network &amp; Wireless Security</p>
+            <p class="title">Systems Security &bull; Low-Level Tooling &bull; Vulnerability Research</p>
             <div class="contacts">
                 <a href="mailto:lazarusebi111@gmail.com">lazarusebi111@gmail.com</a>
                 <span>&bull;</span>
@@ -220,11 +220,11 @@
         <section>
             <h2>Summary</h2>
             <p>
-                Security tooling developer and systems engineer specializing in systems programming, network protocol
-                engineering, and security tooling. Experienced in developing custom network intrusion detectors, passive
-                802.11 wireless frame analyzers, asynchronous network scanners, and Linux endpoint monitoring engines in
-                Python, Rust, C, and Bash. Passionate about low-level networking, deterministic finite state machine (FSM)
-                architecture, and building robust, transparent security systems.
+                Systems security researcher and tooling engineer specializing in low-level systems programming,
+                host hardening, and defensive security tooling. Experienced in engineering endpoint detection monitors,
+                memory anomaly hunters, threat deception sensors, and cryptographic key vaults in Rust, Python, C,
+                and Bash. Passionate about Linux system internals, executable runtime inspection, deterministic
+                finite state machine (FSM) architecture, and building robust, transparent security systems.
             </p>
         </section>
 
@@ -237,9 +237,9 @@
                 </div>
                 <div class="entry-meta">Open Source Projects</div>
                 <ul>
-                    <li>Designed and engineered open-source security tools in Python and Rust focusing on network reconnaissance, raw socket inspection, and 802.11 frame telemetry.</li>
-                    <li>Implemented formal Finite State Machines (FSMs) for connection handling, protocol state tracking, and daemon lifecycle management.</li>
-                    <li>Researched wireless attack vectors and detection heuristics for rogue access points, deauthentication floods, and handshake captures.</li>
+                    <li>Designed and engineered open-source security tools in Rust, Python, and C focusing on host endpoint monitoring, memory anomaly hunting, and threat deception.</li>
+                    <li>Implemented formal Finite State Machines (FSMs) for daemon lifecycle management, connection handshakes, and wire frame parsing.</li>
+                    <li>Researched in-memory execution patterns, anomalous executable mappings, and cryptographic memory zeroization techniques.</li>
                 </ul>
             </div>
 
@@ -251,21 +251,21 @@
                 <div class="entry-meta">BEMINT &mdash; Empowering Africans Program</div>
                 <ul>
                     <li>Participated in collaborative systems programming initiatives, code reviews, and technical workshops.</li>
-                    <li>Deepened practical knowledge of TCP/IP networking, Linux administration, and software architecture principles.</li>
+                    <li>Deepened practical knowledge of Linux system architecture, secure software design, and host-level defense principles.</li>
                     <li>Mentored peers in version control workflows (Git) and foundational Python development.</li>
                 </ul>
             </div>
 
             <div class="entry">
                 <div class="entry-top">
-                    <span>IT &amp; Network Security Intern</span>
+                    <span>Information Security Intern</span>
                     <span class="entry-meta">2023 &mdash; 2024</span>
                 </div>
                 <div class="entry-meta">Industrial Training Fund (ITF)</div>
                 <ul>
-                    <li>Conducted structured network vulnerability scans and wireless environment assessments across office infrastructure.</li>
-                    <li>Assisted system administrators with patch deployment, firewall rule auditing, and endpoint security configuration.</li>
-                    <li>Built Python and Bash automation scripts to streamline repetitive operational and logging workflows.</li>
+                    <li>Conducted host vulnerability assessments and security baseline reviews across organization infrastructure.</li>
+                    <li>Assisted system teams with patch deployment, access control auditing, and endpoint security hardening.</li>
+                    <li>Built Python and Bash automation scripts to streamline repetitive operational and telemetry logging workflows.</li>
                 </ul>
             </div>
 
@@ -276,7 +276,7 @@
                 </div>
                 <div class="entry-meta">Listaac Academy</div>
                 <ul>
-                    <li>Tutored incoming students in core Python programming, Linux command-line navigation, and foundational networking concepts.</li>
+                    <li>Tutored incoming students in core Python programming, Linux command-line navigation, and systems fundamentals.</li>
                     <li>Created structured lab exercises covering socket basics, data structures, and defensive scripting practices.</li>
                     <li>Conducted 1-on-1 code reviews and debugging sessions to assist students in practical problem-solving.</li>
                 </ul>
@@ -287,65 +287,67 @@
             <h2>Selected Projects</h2>
             <div class="entry">
                 <div class="entry-top">
-                    <span>Database Sentinel</span>
-                    <span class="entry-meta">Python / Systems &amp; DB Security</span>
+                    <span>Warden Linux EDR</span>
+                    <span class="entry-meta">Rust / Systems Security</span>
                 </div>
-                <p>Autonomous database self-healing, dataset reconciliation, and security guard engine. Automatically repairs ledger balance drift, synthesizes missing indexes, quarantines orphan foreign keys, neutralizes SQL injection attacks, and generates real-time system health assessments.</p>
+                <p>Lightweight Linux endpoint monitor and memory anomaly hunter auditing process execution trees, `/proc` memory maps, unbacked executable mappings (shellcode detection), and real-time cryptographic file integrity.</p>
             </div>
 
             <div class="entry">
                 <div class="entry-top">
-                    <span>WIDS Sentinel (Wireless Intrusion Detection System)</span>
-                    <span class="entry-meta">Python / Scapy / 802.11</span>
+                    <span>Secrets Vault</span>
+                    <span class="entry-meta">Rust / Cryptography &amp; Memory Safety</span>
                 </div>
-                <p>Passive 802.11 wireless intrusion detection tool analyzing raw monitor-mode management frames to detect rogue access points, Evil Twin beacons, and deauthentication floods.</p>
+                <p>Memory-safe encrypted key and credential store utilizing Argon2id key derivation, ChaCha20-Poly1305 authenticated symmetric encryption, and deterministic RAM zeroization to neutralize memory inspection threats.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Phantom Threat Deception</span>
+                    <span class="entry-meta">Python / Threat Intelligence / Asyncio</span>
+                </div>
+                <p>Multi-protocol deception sensor and payload analyzer simulating SSH, Redis, and HTTP services with live exploit capture, session state machines, and threat intelligence logging.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-top">
+                    <span>Umbra Tunnel</span>
+                    <span class="entry-meta">Python / Covert Channels / Cryptography</span>
+                </div>
+                <p>Deep packet inspection (DPI)-resistant covert transport engine featuring synthetic TLS record framing, forward-secure session key derivation, and formal Finite State Machine (FSM) connection lifecycles.</p>
             </div>
 
             <div class="entry">
                 <div class="entry-top">
                     <span>Spectre Pivot</span>
-                    <span class="entry-meta">Python / Asyncio / Networking</span>
+                    <span class="entry-meta">Python / Attack Surface Mapping / Asyncio</span>
                 </div>
-                <p>Asynchronous network reconnaissance and service fingerprinter built with standard library asyncio for zero-dependency subnet discovery, banner grabbing, and port scanning.</p>
+                <p>Asynchronous infrastructure audit and lateral movement tool providing zero-dependency target fingerprinting, host posture assessment, and exposed service discovery.</p>
             </div>
 
             <div class="entry">
                 <div class="entry-top">
-                    <span>Warden Linux EDR</span>
-                    <span class="entry-meta">Rust / Systems Security</span>
+                    <span>Database Sentinel</span>
+                    <span class="entry-meta">Python / Systems &amp; DB Security</span>
                 </div>
-                <p>Lightweight Linux endpoint monitor auditing process execution trees, `/proc` filesystem maps, and real-time file integrity changes.</p>
-            </div>
-
-            <div class="entry">
-                <div class="entry-top">
-                    <span>Aegis Network IDS</span>
-                    <span class="entry-meta">Rust / Raw Sockets</span>
-                </div>
-                <p>High-throughput network traffic analyzer implementing stateful TCP connection tracking, SYN flood mitigation, and ARP spoofing detection.</p>
-            </div>
-
-            <div class="entry">
-                <div class="entry-top">
-                    <span>Phantom Honeypot</span>
-                    <span class="entry-meta">Python / Deception / Asyncio</span>
-                </div>
-                <p>Multi-protocol deception daemon simulating SSH, Redis, and HTTP services with payload capture, interaction logging, and session state machines.</p>
+                <p>Autonomous database self-healing, dataset reconciliation, and security guard engine. Automatically repairs ledger balance drift, synthesizes missing indexes, quarantines orphan foreign keys, neutralizes SQL injection attacks, and generates real-time system health assessments.</p>
             </div>
         </section>
 
         <section>
             <h2>Technical Proficiencies &amp; Training</h2>
             <ul>
-                <li>802.11 Wireless Protocol Analysis &amp; Frame Inspection (Scapy, Wireshark, Aircrack-ng suite)</li>
-                <li>Network Vulnerability Assessment &amp; Port Scanning (Nmap, Burp Suite)</li>
-                <li>Systems Programming &amp; Memory Safety in Rust and C</li>
                 <li>Linux Systems Architecture, Process Trees, and `/proc` Filesystem Auditing</li>
+                <li>Executable Runtime Inspection, Memory Anomaly Hunting &amp; Reverse Engineering</li>
+                <li>Systems Programming &amp; Memory Safety in Rust and C (Zeroization, RAII, Pointer Safety)</li>
+                <li>Vulnerability Assessment &amp; Security Auditing (Nmap, Burp Suite, Custom Tooling)</li>
+                <li>Endpoint Detection &amp; Response (EDR) Architecture and File Integrity Monitoring (FIM)</li>
+                <li>Cryptographic Key Derivation (Argon2id), AEAD Ciphers (ChaCha20-Poly1305), and Memory Zeroization</li>
                 <li>Database Systems Internals, ACID Isolation, and SQL Injection Threat Defense</li>
-                <li>Asynchronous Concurrency &amp; Socket Programming (Python `asyncio`, raw sockets)</li>
-                <li>TCP/IP Protocol Analysis, Connection State Tracking, and Packet Crafting</li>
-                <li>Finite State Machine (FSM) Modeling for Daemons &amp; Network Protocols</li>
-                <li>Capture The Flag (CTF) Practice (TryHackMe, Hack The Box)</li>
+                <li>Multi-Protocol Threat Deception &amp; Live Payload Telemetry (SSH, Redis, HTTP)</li>
+                <li>Deterministic Finite State Machine (FSM) Modeling for Daemons &amp; Session Protocols</li>
+                <li>Offensive Security &amp; Capture The Flag (CTF) Challenges (TryHackMe, Hack The Box)</li>
+                <li>Asynchronous Concurrency &amp; Low-Level IPC (Python `asyncio`, Unix domain sockets)</li>
                 <li>Version Control &amp; Collaborative Development (Git, GitHub)</li>
             </ul>
         </section>

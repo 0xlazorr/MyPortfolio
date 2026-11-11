@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lazorr</title>
-    <meta name="description" content="lazorr (Lazarus Ebi) — Security Tooling, Systems Programming &amp; Network Security.">
+    <meta name="description" content="lazorr (Lazarus Ebi) — Systems Security, Low-Level Tooling &amp; Vulnerability Research.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -343,7 +343,7 @@
                         lazorr
                         <span class="status-dot" title="Active"></span>
                     </h1>
-                    <p class="role">security tooling &bull; systems programming &bull; network &amp; wireless protocols</p>
+                    <p class="role">systems security &bull; low-level tooling &bull; vulnerability research</p>
                 </div>
             </div>
             <button id="theme-btn" class="theme-btn" aria-label="Toggle theme">theme</button>
@@ -360,21 +360,86 @@
         <!-- Intro Narrative -->
         <main>
             <p>
-                Security tooling developer and systems engineer focusing on
-                <strong>network security tooling</strong>, <strong>wireless (802.11) protocol analysis</strong>, and
+                Systems security researcher and tooling engineer focusing on
+                <strong>host and infrastructure defense</strong>, <strong>executable analysis</strong>, and
                 <strong>low-level systems programming</strong>.
             </p>
             <p>
                 I build reliable, low-overhead security tools in <strong>Rust</strong>, <strong>Python</strong>,
-                and <strong>C</strong>. My work centers on raw packet inspection (Scapy, raw sockets),
-                <strong>802.11 wireless monitoring and intrusion detection</strong>, asynchronous network scanning,
-                and Linux systems telemetry. I value clean engineering, deterministic finite state machines (FSMs), and building tools
-                that solve concrete network and systems problems.
+                and <strong>C</strong>. My work centers on runtime memory inspection, Linux process telemetry,
+                <strong>vulnerability research</strong>, threat deception, and cryptographic data protection. I value
+                clean engineering, deterministic finite state machines (FSMs), and building defensive tooling that
+                addresses real-world security challenges.
             </p>
 
             <!-- Projects -->
             <h2 class="section-title">Selected Projects</h2>
             <div class="item-list">
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/warden-edr" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Warden Linux EDR <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Rust / Systems Security</span>
+                    </div>
+                    <p class="project-desc">
+                        Lightweight Linux endpoint monitor and memory anomaly hunter auditing process execution trees, `/proc` memory maps, unbacked executable mappings (shellcode detection), and real-time cryptographic file integrity.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/secrets-vault" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Secrets Vault <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Rust / Cryptography &amp; Memory Safety</span>
+                    </div>
+                    <p class="project-desc">
+                        Memory-safe encrypted key and credential store utilizing Argon2id key derivation, ChaCha20-Poly1305 authenticated symmetric encryption, and deterministic RAM zeroization to neutralize memory inspection threats.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/phantom-honeypot" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Phantom Threat Deception <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Threat Intelligence / Asyncio</span>
+                    </div>
+                    <p class="project-desc">
+                        Multi-protocol deception sensor and payload analyzer simulating SSH, Redis, and HTTP services with live exploit capture, session state machines, and threat intelligence logging.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/umbra-tunnel" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Umbra Tunnel <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Covert Channels / Cryptography</span>
+                    </div>
+                    <p class="project-desc">
+                        Deep packet inspection (DPI)-resistant covert transport engine featuring synthetic TLS record framing, forward-secure session key derivation, and formal Finite State Machine (FSM) connection lifecycles.
+                    </p>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-top">
+                        <a href="https://github.com/0xlazorr/spectre-pivot" target="_blank" rel="noopener noreferrer"
+                            class="project-name">
+                            Spectre Pivot <span>&nearr;</span>
+                        </a>
+                        <span class="project-tag">Python / Attack Surface Mapping / Asyncio</span>
+                    </div>
+                    <p class="project-desc">
+                        Asynchronous infrastructure audit and lateral movement tool providing zero-dependency target fingerprinting, host posture assessment, and exposed service discovery.
+                    </p>
+                </div>
+
                 <div class="project-item">
                     <div class="project-top">
                         <a href="https://github.com/0xlazorr/database-sentinel" target="_blank" rel="noopener noreferrer"
@@ -385,71 +450,6 @@
                     </div>
                     <p class="project-desc">
                         Autonomous database self-healing, dataset reconciliation, and security guard engine. Automatically repairs ledger balance drift, synthesizes missing indexes, quarantines orphan foreign keys, neutralizes SQL injection attacks, and generates real-time system health assessments.
-                    </p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-top">
-                        <a href="https://github.com/0xlazorr/wids-sentinel" target="_blank" rel="noopener noreferrer"
-                            class="project-name">
-                            WIDS Sentinel <span>&nearr;</span>
-                        </a>
-                        <span class="project-tag">Python / Scapy / 802.11</span>
-                    </div>
-                    <p class="project-desc">
-                        Passive 802.11 wireless intrusion detection tool analyzing raw monitor-mode management frames to detect rogue access points, Evil Twin beacons, and deauthentication floods.
-                    </p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-top">
-                        <a href="https://github.com/0xlazorr/spectre-pivot" target="_blank" rel="noopener noreferrer"
-                            class="project-name">
-                            Spectre Pivot <span>&nearr;</span>
-                        </a>
-                        <span class="project-tag">Python / Asyncio / Networking</span>
-                    </div>
-                    <p class="project-desc">
-                        Asynchronous network reconnaissance and service fingerprinter built with standard library asyncio for zero-dependency subnet discovery, banner grabbing, and port scanning.
-                    </p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-top">
-                        <a href="https://github.com/0xlazorr/warden-edr" target="_blank" rel="noopener noreferrer"
-                            class="project-name">
-                            Warden Linux EDR <span>&nearr;</span>
-                        </a>
-                        <span class="project-tag">Rust / Systems Security</span>
-                    </div>
-                    <p class="project-desc">
-                        Lightweight Linux endpoint monitor auditing process execution trees, `/proc` filesystem maps, and real-time file integrity changes.
-                    </p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-top">
-                        <a href="https://github.com/0xlazorr/aegis-nids" target="_blank" rel="noopener noreferrer"
-                            class="project-name">
-                            Aegis Network IDS <span>&nearr;</span>
-                        </a>
-                        <span class="project-tag">Rust / Raw Sockets</span>
-                    </div>
-                    <p class="project-desc">
-                        High-throughput network traffic analyzer implementing stateful TCP connection tracking, SYN flood mitigation, and ARP spoofing detection.
-                    </p>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-top">
-                        <a href="https://github.com/0xlazorr/phantom-honeypot" target="_blank" rel="noopener noreferrer"
-                            class="project-name">
-                            Phantom Honeypot <span>&nearr;</span>
-                        </a>
-                        <span class="project-tag">Python / Deception / Asyncio</span>
-                    </div>
-                    <p class="project-desc">
-                        Multi-protocol deception daemon simulating SSH, Redis, and HTTP services with payload capture, interaction logging, and session state machines.
                     </p>
                 </div>
             </div>
@@ -466,7 +466,7 @@
                         <span class="exp-date">2024 &mdash; Present</span>
                     </div>
                     <p class="exp-desc">
-                        Designing and building open-source security tools, packet analyzers, and system monitoring engines in Rust, Python, and C. Researching 802.11 wireless protocol mechanics, network scanning heuristics, and deterministic finite state machine (FSM) architectures.
+                        Designing and building open-source security tools, host monitoring agents, and threat deception sensors in Rust, Python, and C. Researching process memory anomaly detection, ELF executable inspection, and deterministic finite state machine (FSM) architectures.
                     </p>
                 </div>
 
@@ -479,20 +479,20 @@
                         <span class="exp-date">2022 &mdash; Present</span>
                     </div>
                     <p class="exp-desc">
-                        Contributed volunteer services across community technology initiatives and technical workshops. Strengthened foundational competencies in network protocols, systems programming, and technical communication.
+                        Contributed volunteer services across community technology initiatives and technical workshops. Strengthened competencies in low-level systems programming, defensive code design, and technical communication.
                     </p>
                 </div>
 
                 <div class="exp-item">
                     <div class="exp-top">
                         <div>
-                            <span class="exp-role">IT &amp; Network Security Intern</span> &bull;
+                            <span class="exp-role">Information Security Intern</span> &bull;
                             <span class="exp-company">Industrial Training Fund (ITF)</span>
                         </div>
                         <span class="exp-date">2023 &mdash; 2024</span>
                     </div>
                     <p class="exp-desc">
-                        Assisted with office network administration, infrastructure vulnerability scanning, and wireless environment audits. Configured network equipment, documented security findings, and built automation scripts in Python and Bash for routine checks.
+                        Assisted with system security audits, host vulnerability assessments, and access configuration reviews. Documented security findings, hardened internal endpoints, and built automation scripts in Python and Bash for operational checks.
                     </p>
                 </div>
 
@@ -505,7 +505,7 @@
                         <span class="exp-date">2021 &mdash; 2022</span>
                     </div>
                     <p class="exp-desc">
-                        Tutored incoming students in core Python programming, Linux command-line navigation, and foundational networking concepts. Created practical lab exercises and conducted 1-on-1 code reviews.
+                        Tutored incoming students in core Python programming, Linux command-line navigation, and systems fundamentals. Created practical lab exercises and conducted 1-on-1 code reviews.
                     </p>
                 </div>
             </div>
@@ -513,28 +513,29 @@
             <!-- Focus & Stack -->
             <h2 class="section-title">Core Focus</h2>
             <div class="tags-group">
-                <span class="tag">802.11 Wireless Protocols</span>
-                <span class="tag">Packet Analysis (Scapy)</span>
-                <span class="tag">Intrusion Detection (NIDS/WIDS)</span>
-                <span class="tag">Network Reconnaissance</span>
-                <span class="tag">Async I/O (asyncio)</span>
-                <span class="tag">Raw Sockets &amp; TCP/IP</span>
                 <span class="tag">Linux Internals &amp; /proc</span>
-                <span class="tag">Database Internals &amp; SQLi Defense</span>
+                <span class="tag">Memory Anomaly Detection</span>
+                <span class="tag">Executable &amp; ELF Inspection</span>
+                <span class="tag">Reverse Engineering</span>
+                <span class="tag">Vulnerability Assessment</span>
+                <span class="tag">Endpoint Detection (EDR)</span>
+                <span class="tag">Cryptographic Key Management</span>
+                <span class="tag">Threat Deception &amp; Honeypots</span>
+                <span class="tag">Host Hardening</span>
                 <span class="tag">State Machine Design (FSMs)</span>
-                <span class="tag">Python</span>
+                <span class="tag">Database Security &amp; SQLi Defense</span>
                 <span class="tag">Rust</span>
+                <span class="tag">Python</span>
                 <span class="tag">C</span>
                 <span class="tag">Bash</span>
-                <span class="tag">Wireshark</span>
+                <span class="tag">Async I/O (asyncio)</span>
                 <span class="tag">Git &amp; Linux CLI</span>
-                <span class="tag">Vulnerability Assessment</span>
             </div>
 
             <!-- Contact -->
             <h2 class="section-title">Contact</h2>
             <p>
-                Always open to discussing security tooling, systems programming, network security research, or technical collaboration.
+                Always open to discussing security tooling, low-level systems programming, vulnerability research, or technical collaboration.
             </p>
             <div class="copy-box" id="copy-email" onclick="copyEmail()">
                 <span id="email-text">lazarusebi111@gmail.com</span>
